@@ -6,7 +6,7 @@ import (
 )
 
 // https://chatgpt.com/c/671433e1-611c-8002-b721-a9ab2468fb0e
-func rotate(nums []int, k int) {
+func rotate189(nums []int, k int) {
 	// Rotate Array
 	// Given an integer array nums.
 	// Given a segment length k.
@@ -43,7 +43,7 @@ func TestRotateExample1(t *testing.T) {
 	k := 3
 	expected := []int{5, 6, 7, 1, 2, 3, 4}
 
-	rotate(nums, k)
+	rotate189(nums, k)
 
 	if !reflect.DeepEqual(nums, expected) {
 		t.Errorf("TestRotateExample1 failed. Expected %v, got %v", expected, nums)
@@ -55,7 +55,7 @@ func TestRotateExample2(t *testing.T) {
 	k := 2
 	expected := []int{3, 99, -1, -100}
 
-	rotate(nums, k)
+	rotate189(nums, k)
 
 	if !reflect.DeepEqual(nums, expected) {
 		t.Errorf("TestRotateExample2 failed. Expected %v, got %v", expected, nums)
@@ -67,7 +67,7 @@ func TestRotateKZero(t *testing.T) {
 	k := 0
 	expected := []int{1, 2, 3, 4, 5}
 
-	rotate(nums, k)
+	rotate189(nums, k)
 
 	if !reflect.DeepEqual(nums, expected) {
 		t.Errorf("TestRotateKZero failed. Expected %v, got %v", expected, nums)
@@ -79,7 +79,7 @@ func TestRotateKEqualLength(t *testing.T) {
 	k := 5
 	expected := []int{1, 2, 3, 4, 5}
 
-	rotate(nums, k)
+	rotate189(nums, k)
 
 	if !reflect.DeepEqual(nums, expected) {
 		t.Errorf("TestRotateKEqualLength failed. Expected %v, got %v", expected, nums)
@@ -91,7 +91,7 @@ func TestRotateLargeK(t *testing.T) {
 	k := 12
 	expected := []int{4, 5, 1, 2, 3}
 
-	rotate(nums, k)
+	rotate189(nums, k)
 
 	if !reflect.DeepEqual(nums, expected) {
 		t.Errorf("TestRotateLargeK failed. Expected %v, got %v", expected, nums)

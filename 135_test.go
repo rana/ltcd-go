@@ -36,7 +36,7 @@ func candy(rts []int) int {
 	// Pass two: rht to lft: compare right-adjacent ratings.
 	for n := len - 2; n >= 0; n-- {
 		if rts[n] > rts[n+1] {
-			cnd[n] = max(cnd[n], cnd[n+1]+1)
+			cnd[n] = max_135(cnd[n], cnd[n+1]+1)
 		}
 	}
 
@@ -49,7 +49,7 @@ func candy(rts []int) int {
 	return sum
 }
 
-func max(a, b int) int {
+func max_135(a, b int) int {
 	if a > b {
 		return a
 	}

@@ -82,6 +82,7 @@ Walk through the algorithm step-by-step with clear, easy-to-understand explanati
    - `error = err`
    - `haystack = hay`
    - `needle = ndl`
+   - `frequency = frq`
 
 2. **Special Techniques**:
    - In the two-pointer technique, use `lft` for the left pointer and `rht` for the right pointer.
@@ -91,6 +92,7 @@ Walk through the algorithm step-by-step with clear, easy-to-understand explanati
    - Pluralize three-letter acronyms by adding an `s` (e.g., `num` becomes `nums`, `idx` becomes `idxs`). Avoid adding `e` or `ies` to pluralize.
    - Prefer compound words with three-letter acronyms over reducing compound words to three letters (e.g., `currentLength = curLen` instead of further abbreviating).
    - Use three-letter acronyms within compound acronyms (e.g., `maximumRight = maxRht`).
+   - Use similar naming conventions in `for` variables. For example, `for row := 0; row < rows; row++ {` instead of `for row := 0; row < mtxH; row++ {`. Identifiers `row` and `rows` have semantic similarity making it easier to read. 
 
 4. **Exceptions**:
    - Preserve non-acronym three-letter words. For example, `top = top`.
