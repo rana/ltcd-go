@@ -38,6 +38,18 @@ Walk through the algorithm step-by-step with clear, easy-to-understand explanati
 - Write `"package main"` and include `"import"` statements for required modules.
 - Prefer the *struct* idiom `var res strings.Builder` over `res := strings.Builder{}`.
 - Prefer the *primitive* idiom `hayLen := len(hay)` over `var hayLen = len(hay)`.
+- Prefer idiomatic `for` when index and value used.
+   ```go
+   for idx, num := range nums {
+      numIdx[num] = idx
+   }
+   ```
+   Avoid:
+   ```go
+   for idx := 0; idx < len(nums); idx++ {
+		numIdx[nums[idx]] = idx
+	}
+   ```
 
 ## Identifier Naming Guidelines
 

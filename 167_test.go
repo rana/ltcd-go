@@ -6,7 +6,7 @@ import (
 )
 
 // https://claude.ai/chat/fe698065-3a01-42f6-874d-f655b19e3842
-func twoSum(nums []int, tgt int) []int {
+func twoSum167(nums []int, tgt int) []int {
 	// Two Sum II - Input Array Is Sorted
 	// Given a sort-ascending integer array `nums`.
 	// Given an integer `tgt`.
@@ -44,7 +44,7 @@ func twoSum(nums []int, tgt int) []int {
 }
 
 // Test cases
-func TestTwoSum(t *testing.T) {
+func TestTwoSum167(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     []int
@@ -85,7 +85,7 @@ func TestTwoSum(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := twoSum(tc.nums, tc.target)
+			got := twoSum167(tc.nums, tc.target)
 			if !reflect.DeepEqual(got, tc.expected) {
 				t.Errorf("twoSum() = %v, want %v", got, tc.expected)
 			}
