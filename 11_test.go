@@ -24,7 +24,7 @@ func maxArea(hgts []int) int {
 
 		// Calculate height.
 		// Use the minimum of the two lines.
-		hgt := min(hgts[lft], hgts[rht])
+		hgt := min11(hgts[lft], hgts[rht])
 
 		// Calculate current area.
 		curArea := wid * hgt
@@ -48,7 +48,7 @@ func maxArea(hgts []int) int {
 	return maxArea
 }
 
-func min(a, b int) int {
+func min11(a, b int) int {
 	if a < b {
 		return a
 	}

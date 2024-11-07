@@ -8,7 +8,7 @@ import (
 // Time complexity: O(m + n), m is the length of array nums1. n is the length of array nums2. We traverse each array once.
 // Space complexity: O(1), constant additional space used.
 // https://chatgpt.com/c/6713ef14-e2c4-8002-b858-76ac90fa6a4a
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func merge88(nums1 []int, m int, nums2 []int, n int) {
 	// Merge Sorted Array
 	// Given two integer arrays sorted ascending.
 	// Given two integer array lengths.
@@ -42,40 +42,40 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 	}
 }
 
-func TestMrg_BothNonEmpty(t *testing.T) {
+func TestMrg88_BothNonEmpty(t *testing.T) {
 	nums1 := []int{1, 2, 3, 0, 0, 0}
 	nums2 := []int{2, 5, 6}
-	merge(nums1, 3, nums2, 3)
+	merge88(nums1, 3, nums2, 3)
 	exp := []int{1, 2, 2, 3, 5, 6}
 	if !reflect.DeepEqual(nums1, exp) {
 		t.Errorf("Expected %v, got %v", exp, nums1)
 	}
 }
 
-func TestMrg_Nums2Empty(t *testing.T) {
+func TestMrg88_Nums2Empty(t *testing.T) {
 	nums1 := []int{1}
 	nums2 := []int{}
-	merge(nums1, 1, nums2, 0)
+	merge88(nums1, 1, nums2, 0)
 	exp := []int{1}
 	if !reflect.DeepEqual(nums1, exp) {
 		t.Errorf("Expected %v, got %v", exp, nums1)
 	}
 }
 
-func TestMrg_Nums1Empty(t *testing.T) {
+func TestMrg88_Nums1Empty(t *testing.T) {
 	nums1 := []int{0}
 	nums2 := []int{1}
-	merge(nums1, 0, nums2, 1)
+	merge88(nums1, 0, nums2, 1)
 	exp := []int{1}
 	if !reflect.DeepEqual(nums1, exp) {
 		t.Errorf("Expected %v, got %v", exp, nums1)
 	}
 }
 
-func TestMrg_DuplicateElements(t *testing.T) {
+func TestMrg88_DuplicateElements(t *testing.T) {
 	nums1 := []int{2, 2, 3, 0, 0, 0}
 	nums2 := []int{1, 2, 3}
-	merge(nums1, 3, nums2, 3)
+	merge88(nums1, 3, nums2, 3)
 	exp := []int{1, 2, 2, 2, 3, 3}
 	if !reflect.DeepEqual(nums1, exp) {
 		t.Errorf("Expected %v, got %v", exp, nums1)

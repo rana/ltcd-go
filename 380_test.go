@@ -68,7 +68,7 @@ func (rs *RandomizedSet) GetRandom() int {
 	return rs.arr[rndIdx]
 }
 
-func TestInsert(t *testing.T) {
+func TestInsert380(t *testing.T) {
 	rs := Constructor()
 	if !rs.Insert(1) {
 		t.Errorf("Insert(1) should return true")
@@ -78,7 +78,7 @@ func TestInsert(t *testing.T) {
 	}
 }
 
-func TestRemove(t *testing.T) {
+func TestRemove380(t *testing.T) {
 	rs := Constructor()
 	rs.Insert(1)
 	if !rs.Remove(1) {
