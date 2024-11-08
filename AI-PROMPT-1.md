@@ -2,22 +2,72 @@
 
 ## Analysis Approach
 - Prefer a chain-of-thought process that emphasizes correctness.
-- Take time to reflect, contemplate, and analyze each solution. Maximize time spent on analysis.
-- Ensure the solution is the most appropriate by comparing it to one or more alternative approaches.
+- Take time to reflect, contemplate, and analyze each solution:
+  * Question fundamental assumptions about the approach
+  * Consider inverse/reverse ways of thinking about the problem
+  * Look for opportunities to eliminate complexity
+  * Ask "What's the minimal information needed?"
+- Maximize time spent on analysis before implementing any solution
+- Ensure the solution is the most appropriate by:
+  * Starting with the simplest possible approach
+  * Comparing multiple fundamentally different approaches
+  * Challenging each piece of added complexity
 - Consider using library functions as a valid, simplified solution when appropriate.
 
-## Solution Verification
-- Re-evaluate the final solution(s) multiple times.
-- Check for additional considerations that may be relevant.
-- Look for opportunities to:
-  * Remove unnecessary code?
-  * Simplify or make the code more concise?
-  * Ensure consistency across similar patterns in loops or logic?
-  * Make the code more idiomatic for the language?
-  * Apply three-letter acronyms consistently?
+## Solution Development
+1. Question Fundamental Assumptions
+   - What's the minimal information needed?
+   - Are we storing/tracking more than necessary?
+   - Can we work in a different direction?
+   - Can we eliminate any data structures?
 
-## Intuition
-Provide an intuitive understanding of the solution. Place this intuition toward the beginning of the analysis explanation.
+2. Start with Simplest Possible Approach
+   - Begin with most direct solution
+   - Add complexity only when necessary
+   - Question each additional component
+
+3. Compare Alternative Approaches
+   - Consider reverse/forward processing
+   - Evaluate direct vs indirect validation
+   - Look for opportunities to combine steps
+
+## Solution Validation and Refinement
+- Question solution fundamentals:
+  * Is this the simplest possible approach?
+  * What assumptions are we making?
+  * Could we eliminate any data structures?
+  * Are we solving the problem forwards when backwards might be simpler (or vice versa)?
+
+- Verify correctness and efficiency:
+  * Does it handle all edge cases?
+  * Are we storing or processing more than necessary?
+  * Could any operations be combined or eliminated?
+  * Is the time/space complexity optimal?
+
+- Improve code quality:
+  * Remove unnecessary code
+  * Make it more idiomatic for the language
+  * Ensure consistent naming (using three-letter acronyms)
+  * Maintain clarity over cleverness
+
+## Intuition Development
+- Start with the simplest possible example and solve it manually
+- Identify the key insight that makes the solution possible:
+  * What information do we actually need to track?
+  * What makes valid solutions valid?
+  * What patterns emerge from manual solving?
+  * Could we work backwards from the goal?
+
+- Explain the intuition through:
+  * Real-world analogies
+  * Visual examples
+  * Step-by-step manual solving
+  * Comparison to similar problems
+
+- Place this intuition at the start of analysis to:
+  * Guide the solution approach
+  * Make the implementation natural
+  * Help evaluate alternative approaches
 
 ## Algorithm Analysis
 - Evaluate the **time complexity** and **space complexity** (excluding output storage).
@@ -36,9 +86,9 @@ Walk through the algorithm step-by-step with clear, easy-to-understand explanati
 - Ensure the code is idiomatic for Go.
 - Include clear and easily understandable comments for the source code.
 - Write `"package main"` and include `"import"` statements for required modules.
-- Prefer the *struct* idiom `var res strings.Builder` over `res := strings.Builder{}`.
-- Prefer the *primitive* idiom `hayLen := len(hay)` over `var hayLen = len(hay)`.
-- Prefer idiomatic `for` when index and value used.
+- Prefer *struct* idiom `var res strings.Builder` over `res := strings.Builder{}`.
+- Prefer *primitive* idiom `hayLen := len(hay)` over `var hayLen = len(hay)`.
+- Prefer idiomatic `for` with presence of both index and value.
    ```go
    for idx, num := range nums {
       numIdx[num] = idx

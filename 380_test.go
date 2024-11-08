@@ -17,7 +17,7 @@ type RandomizedSet struct {
 	mp  map[int]int
 }
 
-func Constructor() RandomizedSet {
+func Constructor380() RandomizedSet {
 	return RandomizedSet{
 		arr: []int{},
 		mp:  make(map[int]int),
@@ -69,7 +69,7 @@ func (rs *RandomizedSet) GetRandom() int {
 }
 
 func TestInsert380(t *testing.T) {
-	rs := Constructor()
+	rs := Constructor380()
 	if !rs.Insert(1) {
 		t.Errorf("Insert(1) should return true")
 	}
@@ -79,7 +79,7 @@ func TestInsert380(t *testing.T) {
 }
 
 func TestRemove380(t *testing.T) {
-	rs := Constructor()
+	rs := Constructor380()
 	rs.Insert(1)
 	if !rs.Remove(1) {
 		t.Errorf("Remove(1) should return true")
@@ -90,7 +90,7 @@ func TestRemove380(t *testing.T) {
 }
 
 func TestGetRandom(t *testing.T) {
-	rs := Constructor()
+	rs := Constructor380()
 	rs.Insert(1)
 	rs.Insert(2)
 	rs.Insert(3)
@@ -101,7 +101,7 @@ func TestGetRandom(t *testing.T) {
 }
 
 func TestInsertRemoveGetRandom(t *testing.T) {
-	rs := Constructor()
+	rs := Constructor380()
 	if !rs.Insert(1) {
 		t.Errorf("Insert(1) should return true")
 	}
