@@ -14,31 +14,31 @@ func Constructor() MinStack {
 	}
 }
 
-func (this *MinStack) Push(val int) {
-	this.vals = append(this.vals, val)
+func (s *MinStack) Push(val int) {
+	s.vals = append(s.vals, val)
 
-	if len(this.mins) == 0 {
-		this.mins = append(this.mins, val)
+	if len(s.mins) == 0 {
+		s.mins = append(s.mins, val)
 	} else {
-		curMin := this.mins[len(this.mins)-1]
+		curMin := s.mins[len(s.mins)-1]
 		if val < curMin {
 			curMin = val
 		}
-		this.mins = append(this.mins, curMin)
+		s.mins = append(s.mins, curMin)
 	}
 }
 
-func (this *MinStack) Pop() {
-	this.vals = this.vals[:len(this.vals)-1]
-	this.mins = this.mins[:len(this.mins)-1]
+func (s *MinStack) Pop() {
+	s.vals = s.vals[:len(s.vals)-1]
+	s.mins = s.mins[:len(s.mins)-1]
 }
 
-func (this *MinStack) Top() int {
-	return this.vals[len(this.vals)-1]
+func (s *MinStack) Top() int {
+	return s.vals[len(s.vals)-1]
 }
 
-func (this *MinStack) GetMin() int {
-	return this.mins[len(this.mins)-1]
+func (s *MinStack) GetMin() int {
+	return s.mins[len(s.mins)-1]
 }
 
 func TestMinStack(t *testing.T) {
