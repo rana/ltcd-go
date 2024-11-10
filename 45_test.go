@@ -8,6 +8,7 @@ import (
 // Space complexity: O(1), constant additional space used.
 // https://chatgpt.com/c/671482a5-b5c4-8002-9a7c-a259de69231e
 func jump(jmps []int) int {
+	_ = jmps
 	return 0
 }
 

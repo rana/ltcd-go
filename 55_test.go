@@ -6,6 +6,7 @@ import "testing"
 // Space complexity: O(1), constant additional space used.
 // https://chatgpt.com/c/67147d95-3944-8002-8b7a-aa0a63347efe
 func canJump(jmps []int) bool {
+	_ = jmps
 	return false
 }
 

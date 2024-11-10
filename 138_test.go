@@ -2,17 +2,17 @@ package main
 
 import "testing"
 
-// Node represents a node in the linked list
-type Node struct {
+// Node138 represents a node in the linked list
+type Node138 struct {
 	Val    int
-	Next   *Node
-	Random *Node
+	Next   *Node138
+	Random *Node138
 }
 
 // Time complexity: O(n), n is the number of nodes in the list. We traverse the list three times.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/12e691a1-bfcc-4c78-9fef-002ea1437c32
-func copyRandomList(hed *Node) *Node {
+func copyRandomList(hed *Node138) *Node138 {
 	// Copy List with Random Pointer
 	// Given the head of a linked list.
 	// Linked list node has a pointer to a random node.
@@ -34,7 +34,7 @@ func copyRandomList(hed *Node) *Node {
 	cur := hed
 	for cur != nil {
 		nxt := cur.Next
-		cpy := &Node{Val: cur.Val}
+		cpy := &Node138{Val: cur.Val}
 		cur.Next = cpy
 		cpy.Next = nxt
 		cur = nxt
@@ -72,15 +72,15 @@ func copyRandomList(hed *Node) *Node {
 }
 
 // For testing purposes
-func createList138(vals [][]int) *Node {
+func createList138(vals [][]int) *Node138 {
 	if len(vals) == 0 {
 		return nil
 	}
 
 	// Create nodes
-	nods := make([]*Node, len(vals))
+	nods := make([]*Node138, len(vals))
 	for idx := range vals {
-		nods[idx] = &Node{Val: vals[idx][0]}
+		nods[idx] = &Node138{Val: vals[idx][0]}
 	}
 
 	// Set next pointers
@@ -98,9 +98,9 @@ func createList138(vals [][]int) *Node {
 	return nods[0]
 }
 
-func compareNodes138(org, cpy *Node) bool {
+func compareNodes138(org, cpy *Node138) bool {
 	// Map to store node mapping from original to copy
-	nodMap := make(map[*Node]*Node)
+	nodMap := make(map[*Node138]*Node138)
 
 	// First pass: build node mapping
 	cur1, cur2 := org, cpy

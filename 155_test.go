@@ -7,7 +7,7 @@ type MinStack struct {
 	mins []int
 }
 
-func Constructor() MinStack {
+func Constructor155() MinStack {
 	return MinStack{
 		vals: []int{},
 		mins: []int{},
@@ -77,7 +77,7 @@ func TestMinStack(t *testing.T) {
 				t.Logf("Operation %d: %s", i, op)
 				switch op {
 				case "MinStack":
-					stk = Constructor()
+					stk = Constructor155()
 				case "push":
 					val := tc.vals[pushIdx]
 					t.Logf("Pushing value: %d", val)

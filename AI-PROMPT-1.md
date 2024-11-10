@@ -86,8 +86,8 @@ Walk through the algorithm step-by-step with clear, easy-to-understand explanati
 - Ensure the code is idiomatic for Go.
 - Include clear and easily understandable comments for the source code.
 - Write `"package main"` and include `"import"` statements for required modules.
-- Prefer *struct* idiom `var res strings.Builder` over `res := strings.Builder{}`.
-- Prefer *primitive* idiom `hayLen := len(hay)` over `var hayLen = len(hay)`.
+- For structs and collections with zero initialization. Prefer *struct* idiom `var res strings.Builder` over `res := strings.Builder{}`.
+- For primitive value types. Prefer *primitive* idiom `hayLen := len(hay)` over `var hayLen = len(hay)`.
 - Prefer idiomatic `for` with presence of both index and value.
    ```go
    for idx, num := range nums {

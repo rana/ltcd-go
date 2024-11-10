@@ -51,22 +51,6 @@ func insert57(invs [][]int, newInv []int) [][]int {
 	return res
 }
 
-// min returns the minimum of two integers
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-// max returns the maximum of two integers
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 // Unit Tests
 func TestInsert57(t *testing.T) {
 	tests := []struct {
