@@ -98,8 +98,8 @@
 - Ensure the code is idiomatic for Go
 - Include clear and easily understandable comments for the source code
 - Write `"package main"` and include `"import"` statements for required modules
-- For structs and collections with zero initialization. Prefer *struct* idiom `var res strings.Builder`, avoid `res := strings.Builder{}`
-- For primitive value types. Prefer *primitive* idiom `hayLen := len(hay)`, avoid `var hayLen = len(hay)`
+- For structs and collections with zero initialization. Prefer *struct* idiom `var res strings.Builder` instead of `res := strings.Builder{}`
+- For primitive value types. Prefer *primitive* idiom `hayLen := len(hay)` instead of `var hayLen = len(hay)`
 - Prefer idiomatic `for` with presence of both index and value:
    ```go
    for idx, num := range nums {
@@ -112,6 +112,7 @@
 		numIdx[nums[idx]] = idx
 	}
    ```
+- For function parameter with identical types, prefer idiomatic identifer separated by comma `func buildTree(lft, rht int)` instead of `func buildTree(lft int, rht int)`.
 
 ### Go-Specific Practices
 - Follow Go idioms and conventions

@@ -12,7 +12,7 @@ type TreeNode100 struct {
 // Time complexity: O(min(n,m)), n is the number of nodes in tree p. m is the number of nodes in tree q. We stop visiting nodes at the first mismatch. Worst case (identical trees), we visit all nodes in both trees.
 // Space complexity: O(max(h1, h2)), h1 is the height of tree p. h2 is the height of tree q. Best case, O(logn) for balanced trees. Worst case, O(n) for skewed trees.
 // https://claude.ai/chat/f29d0f10-76f9-412a-aafa-ff05c1592ba6
-func isSameTree(p *TreeNode100, q *TreeNode100) bool {
+func isSameTree100(p *TreeNode100, q *TreeNode100) bool {
 	// Same Tree
 	// Given the roots of two binary trees p an q.
 	// Determine whether the two trees are identical.
@@ -30,8 +30,8 @@ func isSameTree(p *TreeNode100, q *TreeNode100) bool {
 	// Check value equality.
 	// Check equality of left and right sides.
 	return p.Val == q.Val &&
-		isSameTree(p.Left, q.Left) &&
-		isSameTree(p.Right, q.Right)
+		isSameTree100(p.Left, q.Left) &&
+		isSameTree100(p.Right, q.Right)
 }
 
 // Test cases
@@ -112,7 +112,7 @@ func TestIsSameTree(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			got := isSameTree(tc.p, tc.q)
+			got := isSameTree100(tc.p, tc.q)
 			if got != tc.want {
 				t.Errorf("isSameTree() = %v, want %v", got, tc.want)
 			}
