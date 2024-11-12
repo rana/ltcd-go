@@ -73,6 +73,34 @@
 | haystack     | hay     | Search context |
 | needle       | ndl     | Search target |
 
+#### Context-Specific Naming
+- Use `cur` when emphasizing the temporal/iteration aspect (current element being processed)
+  * Loop iterations: `cur := que[0]`
+  * Traversals: `cur := head` 
+  * Sliding windows: `cur := nums[i]`
+- Use `nod` when emphasizing the data structure aspect
+  * Tree construction: `nod := &TreeNode{Val: val}`
+  * Graph building: `nod := &Node{Val: val}`
+  * Static references: `if nod.Left != nil`
+
+Examples:
+```go
+// Good: emphasizes we're processing the current node
+for len(que) > 0 {
+    cur := que[0]
+    que = que[1:]
+    process(cur)
+}
+
+// Good: emphasizes we're building tree structure
+func buildTree(vals []int) *TreeNode {
+    nod := &TreeNode{Val: vals[0]}
+    nod.Left = buildLeft(vals[1:])
+    nod.Right = buildRight(vals[2:])
+    return nod
+}
+```
+
 #### Compound Names
 - Join TLAs for compound concepts
   * `maxLen` (maximum length)

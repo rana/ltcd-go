@@ -95,7 +95,7 @@ func TestFunction(t *testing.T) {
 - Demonstrate parallel processes
 
 ## Problem-Specific Guidelines
-### LeetCode Problems
+### LeetCode Challenges
 - Use the challenge number and title for the chat title
 - List all constraints
 - Discuss multiple solutions
@@ -104,6 +104,9 @@ func TestFunction(t *testing.T) {
 - Rename function variables using three-letter acronyms for readability
 - Evaluate challenge constraints when constructing unit tests
 - Return both solution function and tests in the same code block
+- Explain the key concepts the challenge is testing for
+- Discuss common challenge variations for key concepts tested
+- Discuss what the challenge helps interviewers assess
 
 ## Documentation Standards
 ### Code Comments
@@ -160,6 +163,7 @@ func TestFunction(t *testing.T) {
 - Optimize for readability
 - Consider maintainability
 - Refer to greedy approach as "local optimization 'greedy' approach"
+- Refer to "problem" as "challenge"
 
 ### State Design Principles
 - Minimize mutable state
@@ -171,12 +175,12 @@ func TestFunction(t *testing.T) {
   // Prefer
   type Cache struct {
       cap   int
-      items map[string]interface{}
+      itms map[string]interface{}
   }
   
   // Over
   type Cache struct {
       cap   int
-      size  int  // Redundant with len(items)
-      items map[string]interface{}
+      size  int  // Redundant with len(itms)
+      itms map[string]interface{}
   }
