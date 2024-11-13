@@ -114,6 +114,47 @@
    ```
 - For function parameter with identical types, prefer idiomatic identifer separated by comma `func buildTree(lft, rht int)` instead of `func buildTree(lft int, rht int)`.
 
+#### Integer Range Iteration
+- For iterating over integer ranges, prefer:
+  ```go
+  // Prefer: Simple range integer
+  for idx := range numCrs {
+      // Use idx
+  }
+  ```
+  Over:
+  ```go
+  // Avoid: Traditional C-style loop
+  for idx := 0; idx < numCrs; idx++ {
+      // Use idx
+  }
+  ```
+
+- For descending ranges, still prefer range with post-decrement:
+  ```go
+  // Prefer: Range with post-processing
+  for idx := range numCrs {
+      cur := numCrs - 1 - idx
+      // Use cur
+  }
+  ```
+  Over:
+  ```go
+  // Avoid: Traditional descending loop
+  for idx := numCrs - 1; idx >= 0; idx-- {
+      // Use idx
+  }
+  ```
+
+- Exception: When stride is not 1
+  ```go
+  // Acceptable: Non-unit stride requires traditional loop
+  for idx := 0; idx < numCrs; idx += 2 {
+      // Use idx
+  }
+  ```
+
+
 ### Go-Specific Practices
 - Follow Go idioms and conventions
 - Use package organization best practices
@@ -128,74 +169,280 @@
 - Implement proper error handling
 
 ### Identifier Naming Guidelines
-#### Acronym Usage
-- Use three-letter acronyms whenever possible
-- Prefer consonants
-- Choose the first three characters of a word when they reflect its meaning
-- Ensure acronyms maintain a close relation to the word's meaning and phonetic sound
 
-#### Standard Acronyms
+#### Core Principles
+- Use three-letter acronyms (TLAs) consistently
+- Maintain phonetic relationship to original word
+- Prefer consonants when creating new acronyms
+- Choose first three characters when they preserve meaning
+- Ensure acronyms are immediately recognizable
+- When multiple words could describe same concept, prefer the word that:
+  * Creates a more distinctive acronym (e.g., 'find/fnd' over 'search/src' to avoid collision with 'source')
+  * Better preserves meaning in its three-letter form
+  * Maintains clearer consonant structure
+  * Examples:
+    - find/fnd over search/src (avoids source collision)
+    - remove/rem over delete/del (avoids delivery collision)
+    - verify/vrf over check/chk (stronger consonants)
+
+#### Standard Acronyms by Category
+
+##### Data Structures
 | Full Word    | Acronym | Usage Context |
 |--------------|---------|---------------|
-| current      | cur     | Iterators, pointers |
-| length       | len     | Arrays, strings |
-| right        | rht     | Trees, pointers |
-| left         | lft     | Trees, pointers |
-| previous     | prv     | Linked lists |
-| next         | nxt     | Linked lists |
-| word         | wrd     | Strings |
-| count        | cnt     | Accumulation |
-| index        | idx     | Arrays, loops |
+| array        | arr     | Collections |
 | matrix       | mtx     | 2D arrays |
-| first        | fst     | General |
-| last         | lst     | General |
-| char         | chr     | Characters |
-| old          | prv     | General |
-| new          | nxt     | General |
-| result       | res     | Return values |
-| response     | res     | APIs |
-| request      | req     | APIs |
-| merge        | mrg     | Combining |
-| original     | org     | Source data |
-| copy         | cpy     | Duplicates |
+| stack        | stk     | Stack DS |
+| queue        | que     | Queue DS |
+| heap         | hep     | Heap DS |
+| tree         | tre     | Tree DS |
+| graph        | gph     | Graph DS |
 | node         | nod     | Trees, graphs |
+| edge         | edg     | Graphs |
+| vertex       | vtx     | Graphs |
+| cycle        | cyc     | Graph cycles |
+| hash         | hsh     | Hash tables |
+
+##### Traversal & Pointers
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
+| breadth      | brd     | BFS traversal |
+| current      | cur     | Iterators, pointers |
+| level        | lvl     | Tree/Graph levels |
+| order        | ord     | Traversal order |
+| path         | pth     | Traversal paths |
+| previous     | prv     | Linked lists, traversal |
+| next         | nxt     | Linked lists, traversal |
+| left         | lft     | Trees, two-pointer |
+| right        | rht     | Trees, two-pointer |
+| parent       | par     | Trees |
+| child        | chd     | Trees |
+| root         | rot     | Trees |
 | head         | hed     | Lists |
-| source       | src     | Source data |
-| destination  | dst     | Target data |
-| number       | num     | Numeric data |
-| product      | prd     | Multiplication |
+| tail         | tal     | Lists |
+| pointer      | ptr     | References |
+| traverse     | trv     | Graph/Tree traversal |
+| iterator     | itr     | Loops |
+
+##### Measurements & Counts
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
+| length       | len     | Arrays, strings |
+| count        | cnt     | Accumulation |
+| size         | siz     | Collections |
+| height       | hgt     | Trees, matrices |
+| width        | wdt     | Matrices, graphics |
+| depth        | dep     | Trees, recursion |
+| distance     | dst     | Graphs, geometry |
+| frequency    | frq     | Counting |
+| weight       | wgt     | Graphs, networks |
+| capacity     | cap     | Containers |
+| threshold    | thr     | Limits |
+
+##### Operations & States
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
+| create       | crt     | CRUD operations |
+| read         | red     | CRUD operations |
+| update       | upd     | CRUD operations |
+| delete       | del     | CRUD operations |
+| query        | qry     | Database |
+| insert       | ins     | Collections |
+| remove       | rmv     | Collections |
+| merge        | mrg     | Combining |
+| split        | spl     | Division |
+| sort         | srt     | Ordering |
+| find         | fnd     | Finding |
+| visit        | vst     | Traversal |
+| process      | prc     | General |
+| validate     | vld     | Checking |
+| calculate    | clc     | Math |
+| initialize   | ini     | Setup |
+| temporary    | tmp     | Storage |
+| buffer       | buf     | I/O |
+| break        | brk     | |
+
+##### Life Cycle & Status
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
+| finish       | fin     | Completion states, Terminal markers |
+| start        | str     | Initialization states |
+| active       | act     | In-progress states |
+| pending      | pnd     | Waiting states |
+
+##### Values & Types
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
+| value        | val     | General |
+| number       | num     | Numeric |
+| string       | str     | Text |
+| character    | chr     | Text |
+| boolean      | bln     | Logic |
+| integer      | int     | Numeric |
+| float        | flt     | Numeric |
+| decimal      | dec     | Numeric |
+| object       | obj     | General |
+| element      | elm     | Collections |
+| item         | itm     | Collections |
+| key          | key     | Maps |
+
+##### Comparison & Limits
+| Full Word    | Acronym | Usage Context |
+|--------------|---------|---------------|
 | maximum      | max     | Comparisons |
 | minimum      | min     | Comparisons |
+| compare      | cmp     | Comparisons |
+| average      | avg     | Statistics |
 | total        | tot     | Sums |
-| bottom       | btm     | Position |
-| error        | err     | Error handling |
-| haystack     | hay     | Search context |
-| needle       | ndl     | Search target |
-| frequency    | frq     | Counting |
-| item         | itm     | General |
-| value        | val     | General |
-| user         | usr     | General |
-| create       | crt     | Data operations (DB, File, Cache, API) |
-| insert       | ins     | Data operations (DB, File, Cache, API) |
-| update       | upd     | Data operations (DB, File, Cache, API) |
-| delete       | del     | Data operations (DB, File, Cache, API) |
+| sum          | sum     | Addition |
+| product      | prd     | Multiplication |
+| quotient     | qot     | Division |
+| remainder    | rem     | Modulus |
+| equation     | eqn     | Equation |
+| range        | rng     | Range |
 
-#### Compound Names
-- Join TLAs for compound concepts
-  * `maxLen` (maximum length)
-  * `curIdx` (current index)
-  * `nxtPtr` (next pointer)
-- Maintain consistency in ordering
+#### Variable Naming Patterns
 
-#### Special Techniques
-- In the two-pointer technique, use `lft` for the left pointer and `rht` for the right pointer
+##### Compound Names
+```go
+// Prefer structured compounds
+// Prefer structured compounds
+maxLen    // maximum length
+curIdx    // current index 
+nxtPtr    // next pointer
+arrLen    // array length
+mtxHgt    // matrix height
+treNod    // tree node
+dfsPth    // DFS path
+bfsPth    // BFS path
+trvOrd    // traverse order
+lvlOrd    // level order
+dfsFndPth // DFS find path
+bfsFndPth // BFS find path
+nxtLvl    // next level
+```
 
-#### Preferred Naming Conventions
-- Use `idx` or `n` as index identifiers
-- Pluralize three-letter acronyms by adding an `s` (e.g., `num` becomes `nums`, `idx` becomes `idxs`)
-- Prefer compound words with three-letter acronyms over reducing compound words to three letters (e.g., `currentLength = curLen` instead of further abbreviating)
-- Use three-letter acronyms within compound acronyms (e.g., `maximumRight = maxRht`)
-- Use similar naming conventions in `for` variables. For example, `for row := 0; row < rows; row++ {` instead of `for row := 0; row < mtxH; row++ {`
+##### Collection Pluralization
+```go
+// Add 's' to acronyms for collections
+nums     // numbers
+idxs     // indices
+vals     // values
+nods     // nodes
+itms     // items
+```
 
-#### Exceptions
-- Preserve non-acronym three-letter words. For example, `top = top`
+##### Position & Range Variables
+```go
+// Use consistent position markers
+lft, rht // horizontal boundaries, two-pointer technique
+top, btm // vertical boundaries
+fst, lst // ranges (first/last)
+```
+
+###### Common Position Compounds
+```go
+// Horizontal positioning
+lftIdx  // left index
+rhtVal  // right value
+lftBnd  // left boundary
+rhtPtr  // right pointer
+
+// Vertical positioning
+topRow  // top row
+btmRow  // bottom row
+topNod  // top node
+btmVal  // bottom value
+
+// Range markers
+fstOcc  // first occurrence
+lstSeen // last seen
+fstIdx  // first index
+lstVal  // last value
+```
+
+##### Special Cases
+1. Preserve common three-letter words:
+   ```go
+   top, sum, map, set // Keep as-is
+   ```
+
+2. Occasional four-letter words acceptable
+   - Avoid collision with previous three-letter acronym
+   - Four letters provides better affinity to consants, meaning, or phonetic relation.
+   - `srch` for search
+
+3. Iterator variables:
+   ```go
+   for idx := range arr {
+   for row := 0; row < rows; row++ {
+   for key := range map {
+   ```
+
+4. Error handling:
+   ```go
+   if err := doSomething(); err != nil {
+   ```
+
+##### Anti-patterns
+```go
+// Avoid these patterns
+currentVal   // Use curVal instead
+arrayLength  // Use arrLen instead
+nodePointer  // Use nodPtr instead
+```
+
+### Solution Code Presentation
+#### Core Principles
+- Present solution code in expandable document format
+- Keep main discussion focused on explanation and intuition
+- Avoid mixing lengthy code blocks with conceptual discussion
+
+#### Solution Format
+```markdown
+<details>
+<summary>Click to see solution</summary>
+
+[Code block with complete solution]
+
+</details>
+```
+
+#### Standard Structure
+1. Present intuition and approach
+2. Show key visual diagrams if needed
+3. Place complete solution code in expandable section
+4. Continue discussion of implementation details
+
+#### When to Use
+- Main solution implementation
+- Alternative solutions
+- Test cases and benchmarks
+- Long code examples
+- Complete working implementations
+
+#### When Not to Use
+- Short code snippets (< 10 lines)
+- Individual functions being discussed
+- Example usage
+- Small code modifications
+- Quick demonstrations
+
+#### Example Usage
+```markdown
+Let's solve this using a depth-first search approach...
+[explanation of approach]
+
+<details>
+<summary>Click to see solution</summary>
+
+```go
+func solution() {
+    // Complete implementation
+}
+```
+
+</details>
+
+Now let's discuss the key aspects of this implementation...
+```

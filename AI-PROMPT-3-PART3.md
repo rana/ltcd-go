@@ -1,43 +1,134 @@
 ## Testing Framework
-### Test Organization
-- Group related test cases
-- Separate positive and negative tests
-- Include edge cases
-- Test performance constraints
-- Keep unit tests separate from solution functions
-- Use the `"testing"` module for unit testing
 
-### Test Structure
+### Key Testing Requirements
+- Tests must be included in same code block as solution
+- Tests should follow solution code immediately
+- Use `"testing"` package and table-driven tests
+- Cover base cases, edge cases, and error conditions
+- Include descriptive test names and documentation
+
+### Test Structure Template
 ```go
-func TestFunction(t *testing.T) {
+// Solution code first
+func Solution() {
+    // Implementation
+}
+
+// Tests follow immediately in same code block
+func TestSolution(t *testing.T) {
     cases := []struct {
         name     string
         input    Type
         expected Type
     }{
-        // test cases
+        // Base cases from problem description
+        {
+            name:     "Example 1 from description",
+            input:    input1,
+            expected: expected1,
+        },
+        
+        // Edge cases
+        {
+            name:     "Empty input",
+            input:    empty,
+            expected: expectedEmpty,
+        },
+        
+        // Error cases
+        {
+            name:     "Invalid input",
+            input:    invalid,
+            expected: expectedError,
+        },
     }
     
     for _, tc := range cases {
         t.Run(tc.name, func(t *testing.T) {
-            // test logic
+            got := Solution(tc.input)
+            if !reflect.DeepEqual(got, tc.expected) {
+                t.Errorf("got %v, want %v", got, tc.expected)
+            }
         })
     }
 }
 ```
 
-### Testing Strategy
-#### Implementation First
-- Develop and explain the solution completely
-- Write comprehensive tests after implementation
-- Use tests to verify edge cases and constraints
-- Demonstrate test-driven thinking throughout development
+### Test Categories & Coverage
+1. Base Cases
+   - Examples from problem description 
+   - Simple valid inputs
+   - Common scenarios
 
-#### Test Coverage
-- Focus on critical path testing
-- Include edge cases and error conditions
-- Verify performance constraints
-- Demonstrate proper error handling
+2. Edge Cases
+   - Empty/minimal inputs
+   - Maximum size inputs
+   - Boundary values
+   - Special numbers (0, 1, maxInt)
+
+3. Error Cases  
+   - Invalid inputs
+   - Constraint violations
+   - Error conditions
+
+### Testing Best Practices
+1. Completeness
+   - Cover all major code paths
+   - Include boundary conditions
+   - Verify error handling
+
+2. Clarity
+   - Clear test names describing purpose
+   - Document non-obvious cases
+   - Organize by test category
+
+3. Performance
+   - Test with size limits
+   - Verify complexity constraints
+   - Benchmark critical paths
+
+4. Maintainability
+   - Consistent structure
+   - Clear failure messages
+   - Document expected behavior
+
+### Example Response Format
+```markdown
+Let's solve this using [approach description]...
+
+<solution code and explanation>
+
+// Complete solution with tests in same code block
+func Solution() {
+    // Solution implementation
+}
+
+func TestSolution(t *testing.T) {
+    cases := []struct {
+        name     string
+        input    Type
+        expected Type
+    }{
+        // Base cases
+        {"Example 1", input1, expected1},
+        
+        // Edge cases
+        {"Empty input", empty, expectedEmpty},
+        
+        // Error cases  
+        {"Invalid input", invalid, expectedError},
+    }
+    
+    for _, tc := range cases {
+        t.Run(tc.name, func(t *testing.T) {
+            got := Solution(tc.input)
+            if !reflect.DeepEqual(got, tc.expected) {
+                t.Errorf("got %v, want %v", got, tc.expected)
+            }
+        })
+    }
+}
+```
 
 ## Algorithm Analysis and Documentation
 ### Time Complexity
@@ -93,6 +184,59 @@ func TestFunction(t *testing.T) {
 - Show algorithm flow diagrams
 - Illustrate time/space complexity
 - Demonstrate parallel processes
+
+#### SVG Technical Guidelines
+##### Core Principles
+- Include padding in viewBox to prevent clipping
+- Set viewBox with negative offsets for margins
+- Use standard margin: 20 units or 5% of dimensions
+- Account for element dimensions in positioning
+- Consider font metrics and text overflow
+- Maintain responsive scaling for readability
+
+##### Layout Standards
+- Section padding: 40 units
+- Text-diagram spacing: 30 units minimum
+- Text line height: 20 units
+- Line spacing: 10 units
+- Section height calculation:
+  * Title height (20 units)
+  * Gap (30 units minimum)
+  * Diagram height plus padding
+  * Bottom padding (40 units)
+
+##### Implementation Guide
+1. Calculate vertical positions:
+   - Track running Y position
+   - Add section padding between elements
+   - Include gaps for text and diagrams
+   - Account for bottom padding
+2. Use transform for element groups:
+   ```svg
+   <svg viewBox="-20 -20 440 240">
+     <text y="20">Section Title</text>
+     <g transform="translate(0,50)">
+       <!-- Diagram content -->
+     </g>
+   </svg>
+   ```
+
+##### Validation Checklist
+- [ ] Adequate viewBox margins
+- [ ] No boundary-touching elements
+- [ ] Complete visibility of text/strokes
+- [ ] Consistent section spacing
+- [ ] Proper running Y position tracking
+- [ ] Responsive scaling verification
+
+##### Common Issues
+- Edge clipping from insufficient margins
+- Text overflow at boundaries
+- Stroke width clipping
+- Transform origin misalignment
+- Inconsistent section spacing
+- Missing element padding
+- Hardcoded position values
 
 ## Problem-Specific Guidelines
 ### LeetCode Challenges

@@ -11,7 +11,7 @@ type ListNode141 struct {
 // Time complexity: O(n), n is the number of nodes in the linked list. Slow and fast pointers move through up to n nodes if there is a cycle. Possibly less if there is no cycle.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/66252c28-5c22-4051-83ca-5068017ef405
-func hasCycle(hed *ListNode141) bool {
+func hasCycle141(hed *ListNode141) bool {
 	// Linked List Cycle
 	// Given the head of a linked list.
 	// Determine whether the linked list has a cycle.
@@ -43,7 +43,7 @@ func hasCycle(hed *ListNode141) bool {
 }
 
 // Test cases
-func TestHasCycle(t *testing.T) {
+func TestHasCycle141(t *testing.T) {
 	// Helper function to create a linked list with a cycle
 	createCyclicList := func(vals []int, pos int) *ListNode141 {
 		if len(vals) == 0 {
@@ -88,7 +88,7 @@ func TestHasCycle(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			hed := createCyclicList(tc.vals, tc.pos)
-			res := hasCycle(hed)
+			res := hasCycle141(hed)
 			if res != tc.expected {
 				t.Errorf("hasCycle() = %v, want %v", res, tc.expected)
 			}
