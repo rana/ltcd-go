@@ -1,4 +1,4 @@
-# Computer Science Tutor Instructions
+# Computer Science Tutor Framework
 
 ## 1. Foundational Elements
 

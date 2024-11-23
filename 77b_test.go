@@ -6,49 +6,48 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n choose k), to create all combinations.
-// Space complexity: O(k), for recursive stack depth.
-// https://claude.ai/chat/43d50773-b075-4a30-8328-b1c44d5febdb
-func combine77(n int, k int) [][]int {
+// Time complexity: O(n choose k), for all combinations.
+// Space complexity: O(k), for recursive stack.
+func combine77b(n int, k int) [][]int {
 	// Combinations
 	// Given two integers n and k.
-	// Create k combinations from numbers in the range [1,n].
+	// Create all combinations of k numbers from a range [1,n].
 	// Return the combinations.
-	// Use backtracking with early pruning and recursion.
-	// Use a closure for recursion and state capture.
+	// Use backtracking, recursion, and early pruning.
+	// Use a closure for recursion and state management.
 
 	// Initialize variables.
 	var res [][]int
 	cur := make([]int, 0, k)
 
-	// Create a closure for recursive backtracking.
-	var bckCmb func(fstIdx int)
-	bckCmb = func(fstIdx int) {
+	// Create a closure.
+	var bckCmb func(pos int)
+	bckCmb = func(pos int) {
 		// Check base case.
-		// Check whether whole combination of length k created.
+		// Check combination length k reached.
 		if len(cur) == k {
-			// Copy combination as cur is shared.
-			cpy := make([]int, k)
-			copy(cpy, cur)
-			res = append(res, cpy)
+			// Make a copy of cur.
+			tmp := make([]int, len(cur))
+			copy(tmp, cur)
+			res = append(res, tmp)
 			return
 		}
 
 		// Check early pruning.
-		// Check whether remaining length is less than needed length.
-		rmnLen := n - fstIdx
+		// Check remaining length less than needed length.
+		remLen := n - pos
 		nedLen := k - len(cur)
-		if rmnLen < nedLen {
+		if remLen < nedLen {
 			return
 		}
 
-		// Recurse from first index.
-		for idx := fstIdx; idx < n; idx++ {
-			// Add to combination. Number is 1-based.
+		// Recurse from current position.
+		for idx := pos; idx < n; idx++ {
+			// Add current number; 1-based.
 			cur = append(cur, idx+1)
-			// Recurse next index.
+			// Recurse for next index.
 			bckCmb(idx + 1)
-			// Backtrack.
+			// Backtrack from current number.
 			cur = cur[:len(cur)-1]
 		}
 	}
@@ -59,8 +58,8 @@ func combine77(n int, k int) [][]int {
 	return res
 }
 
-// TestCombine77 validates the combine function with various test cases
-func TestCombine77(t *testing.T) {
+// TestCombine77b validates the combine function with various test cases
+func TestCombine77b(t *testing.T) {
 	tests := []struct {
 		name string
 		n    int
@@ -101,11 +100,11 @@ func TestCombine77(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := combine77(tt.n, tt.k)
+			got := combine77b(tt.n, tt.k)
 
 			// Sort both got and want for consistent comparison
-			sortCombinations77(got)
-			sortCombinations77(tt.want)
+			sortCombinations77b(got)
+			sortCombinations77b(tt.want)
 
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("combine() = %v, want %v", got, tt.want)
@@ -114,9 +113,9 @@ func TestCombine77(t *testing.T) {
 	}
 }
 
-// sortCombinations77 sorts each combination and the slice of combinations
+// sortCombinations77b sorts each combination and the slice of combinations
 // for consistent comparison in tests
-func sortCombinations77(combs [][]int) {
+func sortCombinations77b(combs [][]int) {
 	for _, comb := range combs {
 		sort.Ints(comb)
 	}
