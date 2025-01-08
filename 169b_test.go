@@ -2,27 +2,27 @@ package main
 
 import "testing"
 
-// Time complexity: O(n), n is the length of array nums. We traverse the array once.
+// Time complexity: O(n), n is the length of the array.
 // Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/67141a8d-0ae4-8002-a543-87e59e0782de
-func majorityElement169(nums []int) int {
+func majorityElement169b(nums []int) int {
 	// Majority Element
 	// Given and array nums.
 	// Determine the majority element.
 	// Return the majority element.
-	// Use the Boyer-Moore Voting algorithm.
+	// Majority element appears more than len(nums)/2.
+	// Use Boyer-Moore Voting algorithm.
 
-	// Initialize a candidate and count.
+	// Initialize variables.
 	can, cnt := nums[0], 0
 
-	// Iterate through each element of nums.
+	// Iterate through nums.
 	for _, num := range nums {
-		// if cnt is zero, set candidate to current num.
+		// Check whether to set candidate.
 		if cnt == 0 {
 			can = num
 		}
 
-		// Increment or decrement count based on candidate match.
+		// Check count adjustment.
 		if can == num {
 			cnt++
 		} else {
@@ -31,11 +31,10 @@ func majorityElement169(nums []int) int {
 	}
 
 	// Candidate is now majority element.
-	// Return majority element.
 	return can
 }
 
-func TestMajorityElement169(t *testing.T) {
+func TestMajorityElement169b(t *testing.T) {
 	// Define test cases
 	tests := []struct {
 		name string
@@ -72,7 +71,7 @@ func TestMajorityElement169(t *testing.T) {
 	// Run all test cases
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := majorityElement169(tt.nums)
+			got := majorityElement169b(tt.nums)
 			if got != tt.want {
 				t.Errorf("majorityElement169() = %d, want %d", got, tt.want)
 			}

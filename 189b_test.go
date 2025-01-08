@@ -5,32 +5,29 @@ import (
 	"testing"
 )
 
-// https://chatgpt.com/c/671433e1-611c-8002-b721-a9ab2468fb0e
-func rotate189(nums []int, k int) {
+func rotate189b(nums []int, k int) {
 	// Rotate Array
 	// Given an integer array nums.
-	// Given a segment length k.
-	// Rotate the array to the right by k.
-	// The array wraps around.
-	// Use three calls to a reverse function.
-	// Reverse whole array, first segment, second segment.
+	// Given an integer k.
+	// Rotate array to the right by k.
+	// Use a reverse function.
+	// Call reverse three times.
 
-	// Adjust k in case larger than nums.
+	// Initialize variables.
 	n := len(nums)
 	k = k % n
 
 	// Reverse whole array.
-	reverse189(nums, 0, n-1)
+	reverse189b(nums, 0, n-1)
 
-	// Reverse first segment
-	reverse189(nums, 0, k-1)
+	// Reverse up to k.
+	reverse189b(nums, 0, k-1)
 
-	// Reverse second segment
-	reverse189(nums, k, n-1)
+	// Reverse from k to end.
+	reverse189b(nums, k, n-1)
 }
 
-func reverse189(nums []int, lft, rht int) {
-	// Reverse from left to right.
+func reverse189b(nums []int, lft, rht int) {
 	for lft < rht {
 		nums[lft], nums[rht] = nums[rht], nums[lft]
 		lft++
@@ -38,7 +35,7 @@ func reverse189(nums []int, lft, rht int) {
 	}
 }
 
-func TestRotate189(t *testing.T) {
+func TestRotate189b(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     []int
@@ -79,7 +76,7 @@ func TestRotate189(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			rotate189(tt.nums, tt.k)
+			rotate189b(tt.nums, tt.k)
 			if !reflect.DeepEqual(tt.nums, tt.expected) {
 				t.Errorf("got %v, want %v", tt.nums, tt.expected)
 			}

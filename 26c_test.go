@@ -5,35 +5,33 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the nums array. We traverse the array once.
-// Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/6714082c-4dc4-8002-9e24-3f3622ee11e4
-func removeDuplicates26(nums []int) int {
-	// Remove Duplicates from Sorted Array
-	// Given a sort-ascending integer array nums.
-	// Remove duplicate in-place.
-	// Each element appears once.
-	// Maintain sort ascending.
-	// Return the count of the unique elements.
+func removeDuplicates26c(nums []int) int {
+	// Remove Duplicate from Sorted Array
+	// Given a sort-ascending integer array.
+	// Remove duplicate elements.
+	// Conditions:
+	// * Remove duplicate elements in-place.
+	// * Place duplicates at end of list
+	// * One unique element for each value.
+	// Return count of valid elements.
 	// Use a two-pointer technique.
+	// Move valid elements from right to left.
 
-	// Initialize the unique count.
+	// Define a unique element count.
 	const unq_cnt = 1
 
-	// Check input minimum edge case.
+	// Check min edge case.
 	if len(nums) <= unq_cnt {
 		return len(nums)
 	}
 
-	// lft is the index of the next unique element.
+	// Initialize variable.
 	lft := unq_cnt
 
-	// Iterate through the remaining elements.
+	// Iterate through nums.
 	for rht := unq_cnt; rht < len(nums); rht++ {
-		// Check whether unique condition met.
-		// Skip over elements not meeting condition.
+		// Check for unique element after gap.
 		if nums[rht] != nums[lft-unq_cnt] {
-			// Move right element to the left.
 			nums[lft] = nums[rht]
 			lft++
 		}
@@ -42,7 +40,7 @@ func removeDuplicates26(nums []int) int {
 	return lft
 }
 
-func TestRemoveDuplicates26(t *testing.T) {
+func TestRemoveDuplicates26c(t *testing.T) {
 	tests := []struct {
 		nums     []int
 		expected []int
@@ -59,7 +57,7 @@ func TestRemoveDuplicates26(t *testing.T) {
 		numsCopy := make([]int, len(test.nums))
 		copy(numsCopy, test.nums) // Preserve original nums for error messages
 
-		k := removeDuplicates26(test.nums)
+		k := removeDuplicates26c(test.nums)
 		if k != test.k {
 			t.Errorf("removeDuplicates(%v) returned k=%d; expected k=%d", numsCopy, k, test.k)
 		}

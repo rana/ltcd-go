@@ -5,35 +5,27 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the array nums. We traverse the array once.
+// Time complexity: O(n), n is the length of array nums.
 // Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/671400b2-bf88-8002-9a26-2d2fa7e3acc2
-func removeElement27(nums []int, val int) int {
-	// Remove Element
+func removeElement27b(nums []int, val int) int {
 	// Given an integer array nums.
-	// Given and integer value val.
-	// Remove all occurrences of val from nums in-place.
-	// Return the count of non-val elements.
+	// Given an integer val.
+	// The number of nums not equal to val is k.
+	// Remove in-place val from nums.
+	// The first k values are not equal to val.
+	// Return k
 	// Use a two-pointer technique.
-
-	// lft is the index of the last allowable element.
 	lft := 0
-
-	// Iterate through each element in nums.
 	for rht := 0; rht < len(nums); rht++ {
-		// Check for current not equal to val.
-		// Skip over elments equal to val.
 		if nums[rht] != val {
-			// Move valid element left.
 			nums[lft] = nums[rht]
 			lft++
 		}
 	}
-
 	return lft
 }
 
-func TestRemoveElement27(t *testing.T) {
+func TestRemoveElement27b(t *testing.T) {
 	tests := []struct {
 		name    string
 		nums    []int
@@ -84,7 +76,7 @@ func TestRemoveElement27(t *testing.T) {
 			cpyNums := make([]int, len(tt.nums))
 			copy(cpyNums, tt.nums)
 
-			gotLen := removeElement27(tt.nums, tt.val)
+			gotLen := removeElement27b(tt.nums, tt.val)
 
 			if gotLen != tt.expLen {
 				t.Errorf("removeElement(%v, %d) = %d; want %d",
