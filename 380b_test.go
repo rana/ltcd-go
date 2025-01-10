@@ -6,69 +6,54 @@ import (
 )
 
 // Insert Delete GetRandom O(1)
-// Implement RandomizedSet380 operations
-// insert, delete, getRandom with
-// O(1) time complexity.
-// Use an array and a map.
-// For delete, swap the last element with the removal element.
-// https://chatgpt.com/c/671549b4-6a30-8002-8548-a1fb6596dbfe
-type RandomizedSet380 struct {
+// Each operation in O(1) time complexity.
+// Use an array and map to acheive.
+type RandomizedSet struct {
 	arr []int
 	mp  map[int]int
 }
 
-func Constructor380() RandomizedSet380 {
-	return RandomizedSet380{
+func Constructor380b() RandomizedSet {
+	return RandomizedSet{
 		arr: []int{},
 		mp:  make(map[int]int),
 	}
 }
 
-func (rs *RandomizedSet380) Insert(val int) bool {
-	// Check whether the element already exists.
+// Insert if not present. Return true if inserted.
+func (rs *RandomizedSet) Insert(val int) bool {
 	if _, exists := rs.mp[val]; exists {
 		return false
 	}
 
-	// Add the new element to the end of the array.
+	rs.mp[val] = len(rs.arr)
 	rs.arr = append(rs.arr, val)
-	// Map the element to the index.
-	rs.mp[val] = len(rs.arr) - 1
-
 	return true
 }
 
-func (rs *RandomizedSet380) Remove(val int) bool {
-	// Check whether the element already exists.
+// Remove val if present. Return true if removed.
+func (rs *RandomizedSet) Remove(val int) bool {
 	idx, exists := rs.mp[val]
 	if !exists {
 		return false
 	}
 
-	// Swap the last element with the removal element.
-
-	// Get the last element.
+	// Swap last value with removed value.
 	lstVal := rs.arr[len(rs.arr)-1]
-	// Overwrite the array removal element with the last element.
-	rs.arr[idx] = lstVal
-	// Update the last element to index mapping.
 	rs.mp[lstVal] = idx
-	// Remove the duplicate last element.
+	rs.arr[idx] = lstVal
+	// Remove target value.
 	rs.arr = rs.arr[:len(rs.arr)-1]
-	// Remove the removal element from the map.
 	delete(rs.mp, val)
-
 	return true
 }
 
-func (rs *RandomizedSet380) GetRandom() int {
-	// Create a random index.
+func (rs *RandomizedSet) GetRandom() int {
 	rndIdx := rand.Intn(len(rs.arr))
-	// Return a random element.
 	return rs.arr[rndIdx]
 }
 
-func TestRandomizedSet380(t *testing.T) {
+func TestRandomizedSet380b(t *testing.T) {
 	tests := []struct {
 		name     string
 		ops      []string
@@ -97,7 +82,7 @@ func TestRandomizedSet380(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			rs := Constructor380()
+			rs := Constructor380b()
 
 			for i, op := range tt.ops {
 				var result bool
@@ -118,7 +103,7 @@ func TestRandomizedSet380(t *testing.T) {
 	}
 }
 
-func TestRandomizedSet_Random380(t *testing.T) {
+func TestRandomizedSet_Random380b(t *testing.T) {
 	tests := []struct {
 		name     string
 		inserts  []int
@@ -133,7 +118,7 @@ func TestRandomizedSet_Random380(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			rs := Constructor380()
+			rs := Constructor380b()
 			for _, num := range tt.inserts {
 				rs.Insert(num)
 			}

@@ -1,31 +1,26 @@
 package main
 
-import (
-	"testing"
-)
+import "testing"
 
-// Time complexity: O(n), n is the length of the string s. We traverse the string once.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/db0a7f32-697a-4d1e-b6fa-6e36812f1d14
-func lengthOfLastWord58(s string) int {
+func lengthOfLastWord58b(s string) int {
 	// Length of Last Word
 	// Given a string s.
-	// Measure the length of the last word in the string.
-	// Return the length of the last word.
-	// Consider there may be trailing spaces.
-	// Words are delimited by spaces.
-	// Iterate from the end of the string.
+	// Determine the length of the last word.
+	// Return the length.
+	// Conditions:
+	// * string is words and spaces.
+	// Traverse from right to left.
+	// Skip any trailing spaces.
 
-	// Initialize variables.
 	cnt := 0
 	idx := len(s) - 1
 
-	// Skip any trailing spaces.
+	// Skip any trailing space.
 	for idx >= 0 && s[idx] == ' ' {
 		idx--
 	}
 
-	// Measure the length of the last word.
+	// Measure last word length.
 	for idx >= 0 && s[idx] != ' ' {
 		cnt++
 		idx--
@@ -34,7 +29,7 @@ func lengthOfLastWord58(s string) int {
 	return cnt
 }
 
-func TestLengthOfLastWord58(t *testing.T) {
+func TestLengthOfLastWord58b(t *testing.T) {
 	tests := []struct {
 		name string
 		str  string
@@ -74,7 +69,7 @@ func TestLengthOfLastWord58(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := lengthOfLastWord58(tt.str); got != tt.want {
+			if got := lengthOfLastWord58b(tt.str); got != tt.want {
 				t.Errorf("lengthOfLastWord() = %v, want %v", got, tt.want)
 			}
 		})

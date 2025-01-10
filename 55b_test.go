@@ -2,27 +2,32 @@ package main
 
 import "testing"
 
-// Time complexity: O(n), n is the length of the nums array.
-// Space complexity: O(1), constant additional space used.
-// https://console.anthropic.com/workbench/12bc0d21-11f2-4aff-837d-fc50a6bcc9c2
-func canJump55(nums []int) bool {
-	maxRch := 0 // Maximum reachable position
-	numLen := len(nums)
+func canJump55b(nums []int) bool {
+	// Jump Game
+	// Given an integer array nums.
+	// Determine whether you can reach last index.
+	// Return true if condition met.
+	// Conditions:
+	// * Array element is a maximum jump length.
+	// * May jump less than max if it helps.
+	// Use a local optimization "greedy" approach.
 
-	for idx := range numLen {
-		// If current position is beyond our reach, we can't proceed
+	maxRch := 0
+
+	for idx, num := range nums {
+		// Check fail condition.
 		if idx > maxRch {
 			return false
 		}
 
-		// Update maximum reachable position
-		curRch := idx + nums[idx]
+		// Update max reach.
+		curRch := idx + num
 		if curRch > maxRch {
 			maxRch = curRch
 		}
 
-		// If we can reach the last index, return early
-		if maxRch >= numLen-1 {
+		// Check success condition.
+		if maxRch >= len(nums)-1 {
 			return true
 		}
 	}
@@ -30,7 +35,7 @@ func canJump55(nums []int) bool {
 	return true
 }
 
-func TestCanJump55(t *testing.T) {
+func TestCanJump55b(t *testing.T) {
 	tests := []struct {
 		name string
 		nums []int
@@ -70,7 +75,7 @@ func TestCanJump55(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := canJump55(tt.nums); got != tt.want {
+			if got := canJump55b(tt.nums); got != tt.want {
 				t.Errorf("canJump() = %v, want %v", got, tt.want)
 			}
 		})

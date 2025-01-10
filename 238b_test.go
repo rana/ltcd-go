@@ -5,40 +5,37 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of array nums. We traverse the array twice.
-// Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/671577be-d428-8002-8153-388aa27e3226
-func productExceptSelf238(nums []int) []int {
+func productExceptSelf238b(nums []int) []int {
 	// Product of Array Except Self
-	// Given an integer array.
-	// Compute the product of adjacent elements.
-	//	- Exclude self element
-	//	- No division operation
-	//	- Time complexity O(1)
+	// Given and integer array nums.
+	// At each element, calculate the product of the whole array except self.
+	// Return the array of answers.
+	// Conditions:
+	// * Time complexity O(n)
+	// * Do not use division
 	// Use a two-pass approach.
-	// Pass one, compute left prefixes.
-	// Pass two, compute right suffixes.
+	// Left to right pass product of prefixes.
+	// Right to left pass product of suffixes and add.
 
-	// Initialize variables.
 	res := make([]int, len(nums))
 	res[0] = 1
 
-	// lft to rht: compute left prefix products and store.
+	// Left to right pass of product prefixes.
 	for idx := 1; idx < len(nums); idx++ {
 		res[idx] = res[idx-1] * nums[idx-1]
 	}
 
-	// rht to lft: compute right suffix products and store.
-	rht_prd := 1
+	// Right to left pass pf prodcut suffixes and add.
+	rhtPrd := 1
 	for idx := len(nums) - 1; idx >= 0; idx-- {
-		res[idx] *= rht_prd
-		rht_prd *= nums[idx]
+		res[idx] *= rhtPrd
+		rhtPrd *= nums[idx]
 	}
 
 	return res
 }
 
-func TestProductExceptSelf238(t *testing.T) {
+func TestProductExceptSelf238b(t *testing.T) {
 	tests := []struct {
 		name     string
 		input    []int
@@ -78,7 +75,7 @@ func TestProductExceptSelf238(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := productExceptSelf238(tt.input)
+			result := productExceptSelf238b(tt.input)
 			if !reflect.DeepEqual(result, tt.expected) {
 				t.Errorf("productExceptSelf() = %v, want %v", result, tt.expected)
 			}

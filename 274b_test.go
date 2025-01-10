@@ -5,33 +5,27 @@ import (
 	"testing"
 )
 
-// Time complexity: O(nlogn), n is the length of array ctes. We sort the array once. We traverse the array for h-index determination once.
-// Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/67153f25-7d64-8002-abb6-192eab61846f
-func hIndex274(ctes []int) int {
+func hIndex274b(ctes []int) int {
 	// H-Index
-	// Given an integer array cts.
-	// Determine h-index.
-	// h-index condition: element value = 1-based index
-	// Return the h-index.
+	// Given an integer array ctes.
+	// Determine the H-Index.
+	// Return the H-Index.
+	// Conditions:
+	// * H-Index is 1-based.
+	// * H-Index element is great or equal to 1-based index.
+	// * Select maximum
+	// Use sort-descending.
 
-	// Sort array descending.
 	sort.Sort(sort.Reverse(sort.IntSlice(ctes)))
-
-	// Iterate through each element of cts.
 	for idx, cte := range ctes {
-		// Check for h-index condition.
-		// h-index condition: element value == 1-based index
 		if cte < idx+1 {
 			return idx
 		}
 	}
-
-	// All elements meet h-index condition.
 	return len(ctes)
 }
 
-func TestHIndex274(t *testing.T) {
+func TestHIndex274b(t *testing.T) {
 	tests := []struct {
 		name      string
 		citations []int
@@ -66,7 +60,7 @@ func TestHIndex274(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := hIndex274(tt.citations)
+			result := hIndex274b(tt.citations)
 			if result != tt.expected {
 				t.Errorf("hIndex(%v) = %d; want %d", tt.citations, result, tt.expected)
 			}

@@ -6,6 +6,7 @@
 - Use `"testing"` package and table-driven tests
 - Cover base cases, edge cases, and error conditions
 - Include descriptive test names and documentation
+- Single table-driven test function.
 
 ### Test Structure Template
 ```go
@@ -27,14 +28,14 @@ func TestSolution(t *testing.T) {
             input:    input1,
             expected: expected1,
         },
-        
+
         // Edge cases
         {
             name:     "Empty input",
             input:    empty,
             expected: expectedEmpty,
         },
-        
+
         // Error cases
         {
             name:     "Invalid input",
@@ -42,7 +43,7 @@ func TestSolution(t *testing.T) {
             expected: expectedError,
         },
     }
-    
+
     for _, tc := range cases {
         t.Run(tc.name, func(t *testing.T) {
             got := Solution(tc.input)
@@ -56,7 +57,7 @@ func TestSolution(t *testing.T) {
 
 ### Test Categories & Coverage
 1. Base Cases
-   - Examples from problem description 
+   - Examples from problem description
    - Simple valid inputs
    - Common scenarios
 
@@ -66,7 +67,7 @@ func TestSolution(t *testing.T) {
    - Boundary values
    - Special numbers (0, 1, maxInt)
 
-3. Error Cases  
+3. Error Cases
    - Invalid inputs
    - Constraint violations
    - Error conditions
@@ -111,14 +112,14 @@ func TestSolution(t *testing.T) {
     }{
         // Base cases
         {"Example 1", input1, expected1},
-        
+
         // Edge cases
         {"Empty input", empty, expectedEmpty},
-        
-        // Error cases  
+
+        // Error cases
         {"Invalid input", invalid, expectedError},
     }
-    
+
     for _, tc := range cases {
         t.Run(tc.name, func(t *testing.T) {
             got := Solution(tc.input)
@@ -321,7 +322,7 @@ func TestSolution(t *testing.T) {
       cap   int
       itms map[string]interface{}
   }
-  
+
   // Over
   type Cache struct {
       cap   int

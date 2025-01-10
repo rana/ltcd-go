@@ -4,35 +4,40 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the arrays. We traverse each array once.
-// Space complexity: O(1), constant additional space used.
-// https://console.anthropic.com/workbench/fc2821b1-dab9-4f65-8725-0911cd10b2d3
-func canCompleteCircuit134(gas []int, cost []int) int {
-	if len(gas) == 0 || len(gas) != len(cost) {
-		return -1
-	}
+func canCompleteCircuit134b(gas []int, cost []int) int {
+	// Gas Station
+	// Given two integer arrays gas and cost.
+	// Determine the starting gas station index.
+	// Return the starting gas station index.
+	// Conditions:
+	// * Arrays are circular
+	// * gas[i] is tank of gas
+	// * cost[i] is cost to travel from i to i+1
+	// Track the difference of gas - cost for current station and total trip.
 
 	totGas, curGas := 0, 0
-	startIndex := 0
-
+	startIdx := 0
 	for idx := 0; idx < len(gas); idx++ {
+		// Calculate difference.
 		dif := gas[idx] - cost[idx]
 		totGas += dif
 		curGas += dif
 
+		// Check starting gas station condition.
 		if curGas < 0 {
 			curGas = 0
-			startIndex = idx + 1
+			startIdx = idx + 1
 		}
 	}
 
+	// Check success condition.
 	if totGas >= 0 {
-		return startIndex
+		return startIdx
 	}
 	return -1
 }
 
-func TestCanCompleteCircuit134(t *testing.T) {
+func TestCanCompleteCircuit134b(t *testing.T) {
 	tests := []struct {
 		name     string
 		gas      []int
@@ -67,7 +72,7 @@ func TestCanCompleteCircuit134(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := canCompleteCircuit134(tt.gas, tt.cost)
+			result := canCompleteCircuit134b(tt.gas, tt.cost)
 			if result != tt.expected {
 				t.Errorf("got %d, want %d", result, tt.expected)
 			}

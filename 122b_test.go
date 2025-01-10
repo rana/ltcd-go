@@ -2,34 +2,26 @@ package main
 
 import "testing"
 
-// Time complexity: O(n), n is the length of the array prcs. We traverse the array once.
-// Space complexity: O(1), constant additional space used.
-// https://chatgpt.com/c/6714797e-7598-8002-b8ea-f625fcd45f64
-func maxProfit122(prcs []int) int {
+func maxProfit122b(prcs []int) int {
 	// Best Time to Buy and Sell Stock II
-	// Given and integer array prcs.
-	// Buy and sell multiple times.
-	// Hold one share at a time.
+	// Given an integer array prcs.
 	// Determine the maximum profit.
 	// Return the maximum profit.
-	// Use a local optimization "greedy" algorithm.
+	// Conditions:
+	// * Hold one share at a time.
+	// * Can buy then sell multiple times.
+	// Use a local optimization "greedy" algorithm
 
-	// Initialize variable.
-	max_pft := 0
-
-	// Iterate through each element of the prcs array.
+	maxPrf := 0
 	for idx := 1; idx < len(prcs); idx++ {
-		// Check whether there is a daily profit.
 		if prcs[idx] > prcs[idx-1] {
-			// Accumulate daily profit.
-			max_pft += prcs[idx] - prcs[idx-1]
+			maxPrf += prcs[idx] - prcs[idx-1]
 		}
 	}
-
-	return max_pft
+	return maxPrf
 }
 
-func TestMaxProfit122(t *testing.T) {
+func TestMaxProfit122b(t *testing.T) {
 	tests := []struct {
 		name     string
 		prices   []int
@@ -64,7 +56,7 @@ func TestMaxProfit122(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := maxProfit122(tt.prices)
+			got := maxProfit122b(tt.prices)
 			if got != tt.expected {
 				t.Errorf("maxProfit122() = %d, want %d", got, tt.expected)
 			}

@@ -5,18 +5,16 @@ import (
 	"testing"
 )
 
-// Time complexity: O(1), fixed-size number of operations. Maximum input integer is 3999.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/f1d0b601-0832-40eb-a6e2-d1bd6fc852e9
-func intToRoman12(num int) string {
+func intToRoman12b(num int) string {
 	// Integer to Roman
 	// Given an integer num.
-	// Transform the integer to a string of roman numerals.
-	// Use a local optimization "greedy" approach.
-	// Use a value-symbol table sorted descending.
+	// Transform the integer to a roman numeral string.
+	// Return the roman numeral string.
+	// Use local optimization "greedy" approach.
+	// Use a sort-descending integer-symbol table.
+	// Table includes numeral combinations.
 	// Roman numerals: I V X L C D M
 
-	// Initialize variables.
 	vps := []struct {
 		val int
 		sym string
@@ -36,23 +34,16 @@ func intToRoman12(num int) string {
 		{1, "I"},
 	}
 	var res strings.Builder
-
-	// Iterate through value-pair table.
 	for _, vp := range vps {
-		// Check whther input integer is greater or
-		// equal to current table value.
 		for num >= vp.val {
-			// Store the roman numeral.
 			res.WriteString(vp.sym)
-			// Decrement the current table value.
 			num -= vp.val
 		}
 	}
-
 	return res.String()
 }
 
-func TestIntToRoman12(t *testing.T) {
+func TestIntToRoman12b(t *testing.T) {
 	tests := []struct {
 		inp int
 		exp string
@@ -67,16 +58,16 @@ func TestIntToRoman12(t *testing.T) {
 	}
 
 	for _, tst := range tests {
-		res := intToRoman12(tst.inp)
+		res := intToRoman12b(tst.inp)
 		if res != tst.exp {
 			t.Errorf("intToRoman(%d) = %s; want %s", tst.inp, res, tst.exp)
 		}
 	}
 }
 
-func TestIntToRomanEdgeCases12(t *testing.T) {
+func TestIntToRomanEdgeCases12b(t *testing.T) {
 	// Test lower bound
-	if res := intToRoman12(1); res != "I" {
+	if res := intToRoman12b(1); res != "I" {
 		t.Errorf("intToRoman(1) = %s; want I", res)
 	}
 

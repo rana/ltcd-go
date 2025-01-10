@@ -4,42 +4,44 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the array.
-// Space complexity: O(1), constant additional space used.
-func jump45(nums []int) int {
-	// Edge case: single element array needs no jumps
+func jump45b(nums []int) int {
+	// Jump Game II
+	// Given an integer array nums.
+	// Determine min number of jumps to last index.
+	// Return min number of jumps.
+	// Conditions:
+	// * Array element is max jump length.
+	// * Can jump less than max.
+	// Use a local optimization "greedy" approach.
+
+	// Check min edge case.
 	if len(nums) <= 1 {
 		return 0
 	}
 
-	// Initialize variables
-	jmp := 0    // number of jumps
-	curMax := 0 // furthest index we can reach from current position
-	nxtMax := 0 // furthest index we can reach in next jump
+	jmpCnt := 0
+	curMax, nxtMax := 0, 0
 
-	// Iterate through array (except last element)
-	for idx := 0; idx < len(nums)-1; idx++ {
-		// Update furthest reachable position in next jump
+	for idx := 0; idx < len(nums); idx++ {
+		// Calculate nxtMax
 		nxtMax = max(nxtMax, idx+nums[idx])
 
-		// If we've reached the limit of our current jump
+		// Check completion of current max jump.
 		if idx == curMax {
-			// Make the jump
-			jmp++
-			// Update our current reach to the furthest we found
 			curMax = nxtMax
+			jmpCnt++
 
-			// If we can already reach the end, no need to continue
+			// Check early return
 			if curMax >= len(nums)-1 {
 				break
 			}
 		}
 	}
 
-	return jmp
+	return jmpCnt
 }
 
-func TestJump45(t *testing.T) {
+func TestJump45b(t *testing.T) {
 	tests := []struct {
 		name string
 		nums []int
@@ -79,7 +81,7 @@ func TestJump45(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := jump45(tt.nums); got != tt.want {
+			if got := jump45b(tt.nums); got != tt.want {
 				t.Errorf("jump() = %v, want %v", got, tt.want)
 			}
 		})
