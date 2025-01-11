@@ -5,53 +5,38 @@ import (
 	"unicode"
 )
 
-// Time complexity: O(n), n is the length of the string. We traverse the string once.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/6f5b68df-2313-4b4b-a30e-0cb09dab3a7e
-func isValidPalindrome125(s string) bool {
+func isValidPalindrome125b(s string) bool {
 	// Valid Palindrome
-	// Given a string s with printable ASCII characters.
-	// Determine whether the string is a palindrome.
-	// Palindrome conditions:
-	//	* Remove non-alphanumeric characters.
-	//	* Transform characters to lowercase.
-	// Use a one-pass approach which cleans while checks.
-	// Use a two-pointer technique.
-
-	// Initialize two pointers.
+	// Given a string s.
+	// Determine if string is palindrome.
+	// Return true if condition met.
+	// Conditions:
+	// * Remove non-alphanumeric.
+	// * Transform to lowercase for comparison.
+	// Use a helper function isAlphanumeric.
+	// Use two-pointer technique.
 	lft, rht := 0, len(s)-1
-
-	// Iterate until left and right meet.
 	for lft < rht {
-		// Skip left non-alphanumeric characters.
-		for lft < rht && !isAlphanumeric125(rune(s[lft])) {
+		for lft < rht && !isAlphanumeric125b(s[lft]) {
 			lft++
 		}
-
-		// Skip right non-alphanumeric characters.
-		for lft < rht && !isAlphanumeric125(rune(s[rht])) {
+		for lft < rht && !isAlphanumeric125b(s[rht]) {
 			rht--
 		}
-
-		// Compare case-insensitive characters.
 		if unicode.ToLower(rune(s[lft])) != unicode.ToLower(rune(s[rht])) {
 			return false
 		}
-
-		// Move pointers.
 		lft++
 		rht--
 	}
-
 	return true
 }
 
-func isAlphanumeric125(chr rune) bool {
-	return unicode.IsLetter(chr) || unicode.IsDigit(chr)
+func isAlphanumeric125b(chr byte) bool {
+	return unicode.IsLetter(rune(chr)) || unicode.IsDigit(rune(chr))
 }
 
-// Unit Tests
-func TestIsValidPalindrome125(t *testing.T) {
+func TestIsValidPalindrome125b(t *testing.T) {
 	tests := []struct {
 		name string
 		str  string
@@ -101,7 +86,7 @@ func TestIsValidPalindrome125(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := isValidPalindrome125(tt.str); got != tt.want {
+			if got := isValidPalindrome125b(tt.str); got != tt.want {
 				t.Errorf("isValidPalindrome() = %v, want %v", got, tt.want)
 			}
 		})

@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n), n is the length of string `str`. We traverse the string twice. Once to build the zigzag pattern. And a second time to concatenate the return string.
 // Space complexity: O(n), n characters are stored in rows for the zigzag transform operation.
 // https://claude.ai/chat/e67a775f-d714-463a-9420-fd20d31a9f60
-func convert(str string, numRows int) string {
+func convert6(str string, numRows int) string {
 	// Zigzag Converstion
 	// Given a string str with English letters.
 	// Given an integer numRows.
@@ -57,8 +57,7 @@ func convert(str string, numRows int) string {
 	return res.String()
 }
 
-// Test cases
-func TestConvert(t *testing.T) {
+func TestConvert6(t *testing.T) {
 	tests := []struct {
 		name    string
 		str     string
@@ -105,7 +104,7 @@ func TestConvert(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := convert(tt.str, tt.numRows); got != tt.want {
+			if got := convert6(tt.str, tt.numRows); got != tt.want {
 				t.Errorf("convert() = %v, want %v", got, tt.want)
 			}
 		})

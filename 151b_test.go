@@ -5,39 +5,26 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the string array. We traverse the array three times. Once to split by whitespace. And a second time to reverse. A third time to join a string.
-// Space complexity: O(n), n is the lnegth of a split array holding intermediate words.
-// https://claude.ai/chat/c15cc2ad-5d6a-40d4-91ae-8b6c3810cb01
-func reverseWords151(str string) string {
+func reverseWords151b(s string) string {
 	// Reverse Words in a String
-	// Given a string str.
-	// String holds words and whitespaces.
-	// Reverse the words.
-	// Return a string of reversed word delimited by spaces.
+	// Given a string s.
+	// Reverse words.
+	// Return a concatenated string of reversed words.
 	// Use a two-pointer technique.
+	// Conditions:
+	// * Leading and trailing spaces may be present.
 
-	// Trim leading and trailing spaces.
-	// Split words by whitespace.
-	wrds := strings.Fields(str)
-
-	// Initialize two-pointer variables.
+	wrds := strings.Fields(s)
 	lft, rht := 0, len(wrds)-1
-
-	// Iterate until lft and rht meet.
 	for lft < rht {
-		// Reverse words.
 		wrds[lft], wrds[rht] = wrds[rht], wrds[lft]
-
-		// Advance indexes.
 		lft++
 		rht--
 	}
-
-	// Return reversed word strign joined by space.
 	return strings.Join(wrds, " ")
 }
 
-func TestReverseWords151(t *testing.T) {
+func TestReverseWords151b(t *testing.T) {
 	tests := []struct {
 		nam string // test name
 		inp string // input string
@@ -77,7 +64,7 @@ func TestReverseWords151(t *testing.T) {
 
 	for _, tst := range tests {
 		t.Run(tst.nam, func(t *testing.T) {
-			got := reverseWords151(tst.inp)
+			got := reverseWords151b(tst.inp)
 			if got != tst.exp {
 				t.Errorf("reverseWords(%q) = %q; want %q", tst.inp, got, tst.exp)
 			}

@@ -5,7 +5,7 @@ import "testing"
 // Time complexity: O(n), n is the length of string t. We traverse string t once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/cf1db7a2-fa64-4594-8c14-a765d7cdff80
-func isSubsequence(s string, t string) bool {
+func isSubsequence392(s string, t string) bool {
 	// Is Subsequence
 	// Given strings s and t made of lowercase English letters.
 	// Determine whether string s is a subsequence of string t.
@@ -44,35 +44,34 @@ func isSubsequence(s string, t string) bool {
 	return sIdx == sLen
 }
 
-// Test cases
-func TestIsSubsequence(t *testing.T) {
+func TestIsSubsequence392(t *testing.T) {
 	// Test case 1: Basic valid subsequence
-	if res := isSubsequence("abc", "ahbgdc"); !res {
+	if res := isSubsequence392("abc", "ahbgdc"); !res {
 		t.Errorf("Expected true for s='abc', t='ahbgdc', got false")
 	}
 
 	// Test case 2: Invalid subsequence
-	if res := isSubsequence("axc", "ahbgdc"); res {
+	if res := isSubsequence392("axc", "ahbgdc"); res {
 		t.Errorf("Expected false for s='axc', t='ahbgdc', got true")
 	}
 
 	// Test case 3: Empty string s
-	if res := isSubsequence("", "ahbgdc"); !res {
+	if res := isSubsequence392("", "ahbgdc"); !res {
 		t.Errorf("Expected true for empty string s, got false")
 	}
 
 	// Test case 4: Empty string t
-	if res := isSubsequence("abc", ""); res {
+	if res := isSubsequence392("abc", ""); res {
 		t.Errorf("Expected false for empty string t, got true")
 	}
 
 	// Test case 5: Single character match
-	if res := isSubsequence("a", "a"); !res {
+	if res := isSubsequence392("a", "a"); !res {
 		t.Errorf("Expected true for s='a', t='a', got false")
 	}
 
 	// Test case 6: Longer valid subsequence
-	if res := isSubsequence("ace", "abcde"); !res {
+	if res := isSubsequence392("ace", "abcde"); !res {
 		t.Errorf("Expected true for s='ace', t='abcde', got false")
 	}
 }
