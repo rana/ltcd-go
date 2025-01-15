@@ -5,40 +5,8 @@ import (
 	"testing"
 )
 
-// Time complexity: O(m + n), m is the length of array nums1. n is the length of array nums2.
-// Space complexity: O(1), constant additional space is used for several variables.
 func merge88b(nums1 []int, m int, nums2 []int, n int) {
-	// Given two integer arrays nums1, nums2
-	// Each is sorted in ascending order.
-	// Merge into nums1.
-	// Conditions:
-	// * Maintain ascending order
-	// Length of nums1 is m + n.
-	// Use a three-pointer technique.
 
-	// Initialize variables.
-	idx1, idx2 := m-1, n-1
-	idx := m + n - 1
-
-	// Iterate through existing arrays from the end.
-	// Larger elements on right side.
-	for idx1 >= 0 && idx2 >= 0 {
-		if nums1[idx1] > nums2[idx2] {
-			nums1[idx] = nums1[idx1]
-			idx1--
-		} else {
-			nums1[idx] = nums2[idx2]
-			idx2--
-		}
-		idx--
-	}
-
-	// Add any remaining elements from nums2.
-	for idx2 >= 0 {
-		nums1[idx] = nums2[idx2]
-		idx2--
-		idx--
-	}
 }
 
 func TestMerge88b(t *testing.T) {

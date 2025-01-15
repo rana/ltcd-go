@@ -29,10 +29,10 @@ func productExceptSelf238(nums []int) []int {
 	}
 
 	// rht to lft: compute right suffix products and store.
-	rht_prd := 1
+	rhtPrd := 1
 	for idx := len(nums) - 1; idx >= 0; idx-- {
-		res[idx] *= rht_prd
-		rht_prd *= nums[idx]
+		res[idx] *= rhtPrd
+		rhtPrd *= nums[idx]
 	}
 
 	return res

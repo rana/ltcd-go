@@ -2,34 +2,8 @@ package main
 
 import "testing"
 
-// Time complexity: O(m * n), m is the length of string hay. n is the length of string ned.
-// Space complexity: O(1), constant additional space used.
 func strStr28b(hay string, ned string) int {
-	// Find the Index of the First Occurrence in a String
-	// Given strings hay and ned.
-	// Determine whether ned is in hay.
-	// Return the first index of ned; or, -1.
-	// Use a two-pointer technique.
-	hayLen, nedLen := len(hay), len(ned)
-	if hayLen < nedLen {
-		return -1
-	}
-	hayIdx, nedIdx := 0, 0
-
-	// Iterate through hay.
-	for hayIdx <= hayLen-nedLen {
-		nedIdx = 0
-		// Iterate through ned.
-		for nedIdx < nedLen && hay[hayIdx+nedIdx] == ned[nedIdx] {
-			nedIdx++
-		}
-		// Check whole word match
-		if nedIdx == nedLen {
-			return hayIdx
-		}
-		hayIdx++
-	}
-	return -1
+	return 0
 }
 
 func TestStrStr28b(t *testing.T) {

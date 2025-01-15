@@ -5,7 +5,7 @@ import "testing"
 // Time complexity: O(n), n is the length of string s. We iterate through it once.
 // Space complexity: O(min(m, n) m is the character set size. n is the string length.
 // https://claude.ai/chat/a04662a3-d932-4a0f-81d4-4a778fffbe23
-func lengthOfLongestSubstring(s string) int {
+func lengthOfLongestSubstring3(s string) int {
 	// Longest Substring Without Repeating Characters
 	// Given a string s.
 	// Find the maximum length of a substring with condition.
@@ -49,8 +49,7 @@ func lengthOfLongestSubstring(s string) int {
 	return maxLen
 }
 
-// Test cases
-func TestLengthOfLongestSubstring(t *testing.T) {
+func TestLengthOfLongestSubstring3(t *testing.T) {
 	tests := []struct {
 		name string
 		s    string
@@ -70,7 +69,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := lengthOfLongestSubstring(tc.s)
+			got := lengthOfLongestSubstring3(tc.s)
 			if got != tc.want {
 				t.Errorf("lengthOfLongestSubstring(%q) = %d; want %d",
 					tc.s, got, tc.want)

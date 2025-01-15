@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+// Time complexity: O(n), n is the length of the nums array.
+// Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/fe698065-3a01-42f6-874d-f655b19e3842
 func twoSum167(nums []int, tgt int) []int {
 	// Two Sum II - Input Array Is Sorted

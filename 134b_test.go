@@ -5,36 +5,7 @@ import (
 )
 
 func canCompleteCircuit134b(gas []int, cost []int) int {
-	// Gas Station
-	// Given two integer arrays gas and cost.
-	// Determine the starting gas station index.
-	// Return the starting gas station index.
-	// Conditions:
-	// * Arrays are circular
-	// * gas[i] is tank of gas
-	// * cost[i] is cost to travel from i to i+1
-	// Track the difference of gas - cost for current station and total trip.
-
-	totGas, curGas := 0, 0
-	startIdx := 0
-	for idx := 0; idx < len(gas); idx++ {
-		// Calculate difference.
-		dif := gas[idx] - cost[idx]
-		totGas += dif
-		curGas += dif
-
-		// Check starting gas station condition.
-		if curGas < 0 {
-			curGas = 0
-			startIdx = idx + 1
-		}
-	}
-
-	// Check success condition.
-	if totGas >= 0 {
-		return startIdx
-	}
-	return -1
+	return 0
 }
 
 func TestCanCompleteCircuit134b(t *testing.T) {

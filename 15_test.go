@@ -9,7 +9,7 @@ import (
 // Time complexity: O(n^2), n is the length of the nums array. We sort the array for O(nlogn). We traverse the array with an outer loop and inner loop for O(n^2).
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/14e3edf4-cd8c-413b-968c-1e205d50773a
-func threeSum(nums []int) [][]int {
+func threeSum15(nums []int) [][]int {
 	// 3Sum
 	// Given an integer array nums.
 	// Find all triplets which sum to zero.
@@ -78,8 +78,36 @@ func threeSum(nums []int) [][]int {
 	return res
 }
 
-// TestThreeSum runs test cases for the threeSum function
-func TestThreeSum(t *testing.T) {
+func TestThreeSum15(t *testing.T) {
+	compareResults := func(got, want [][]int) bool {
+		if len(got) != len(want) {
+			return false
+		}
+
+		// Create maps for comparison
+		gotMap := make(map[string]bool)
+		wantMap := make(map[string]bool)
+
+		for _, triplet := range got {
+			sort.Ints(triplet)
+			key := fmt.Sprintf("%d,%d,%d", triplet[0], triplet[1], triplet[2])
+			gotMap[key] = true
+		}
+
+		for _, triplet := range want {
+			sort.Ints(triplet)
+			key := fmt.Sprintf("%d,%d,%d", triplet[0], triplet[1], triplet[2])
+			wantMap[key] = true
+		}
+
+		for k := range gotMap {
+			if !wantMap[k] {
+				return false
+			}
+		}
+
+		return true
+	}
 	tests := []struct {
 		name string
 		nums []int
@@ -114,41 +142,10 @@ func TestThreeSum(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := threeSum(tt.nums)
+			got := threeSum15(tt.nums)
 			if !compareResults(got, tt.want) {
 				t.Errorf("threeSum() = %v, want %v", got, tt.want)
 			}
 		})
 	}
-}
-
-// compareResults compares two slices of integer slices regardless of order
-func compareResults(got, want [][]int) bool {
-	if len(got) != len(want) {
-		return false
-	}
-
-	// Create maps for comparison
-	gotMap := make(map[string]bool)
-	wantMap := make(map[string]bool)
-
-	for _, triplet := range got {
-		sort.Ints(triplet)
-		key := fmt.Sprintf("%d,%d,%d", triplet[0], triplet[1], triplet[2])
-		gotMap[key] = true
-	}
-
-	for _, triplet := range want {
-		sort.Ints(triplet)
-		key := fmt.Sprintf("%d,%d,%d", triplet[0], triplet[1], triplet[2])
-		wantMap[key] = true
-	}
-
-	for k := range gotMap {
-		if !wantMap[k] {
-			return false
-		}
-	}
-
-	return true
 }

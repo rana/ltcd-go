@@ -2,23 +2,10 @@ package main
 
 import "testing"
 
+// Time complexity:
+// Space complexity:
 func maxProfit122b(prcs []int) int {
-	// Best Time to Buy and Sell Stock II
-	// Given an integer array prcs.
-	// Determine the maximum profit.
-	// Return the maximum profit.
-	// Conditions:
-	// * Hold one share at a time.
-	// * Can buy then sell multiple times.
-	// Use a local optimization "greedy" algorithm
-
-	maxPrf := 0
-	for idx := 1; idx < len(prcs); idx++ {
-		if prcs[idx] > prcs[idx-1] {
-			maxPrf += prcs[idx] - prcs[idx-1]
-		}
-	}
-	return maxPrf
+	return 0
 }
 
 func TestMaxProfit122b(t *testing.T) {

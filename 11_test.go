@@ -5,7 +5,7 @@ import "testing"
 // Time complexity: O(n), n is the length of the `hgts` array.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/3bf1bc41-ba7c-4f08-9d49-f472dd6bbd31
-func maxArea(hgts []int) int {
+func maxArea11(hgts []int) int {
 	// Container with Most Water
 	// Given an integer array `hgts`.
 	// The arary represents line heights.
@@ -24,7 +24,7 @@ func maxArea(hgts []int) int {
 
 		// Calculate height.
 		// Use the minimum of the two lines.
-		hgt := min11(hgts[lft], hgts[rht])
+		hgt := min(hgts[lft], hgts[rht])
 
 		// Calculate current area.
 		curArea := wid * hgt
@@ -48,14 +48,7 @@ func maxArea(hgts []int) int {
 	return maxArea
 }
 
-func min11(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func TestMaxArea(t *testing.T) {
+func TestMaxArea11(t *testing.T) {
 	tests := []struct {
 		name     string
 		height   []int
@@ -90,7 +83,7 @@ func TestMaxArea(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			result := maxArea(tc.height)
+			result := maxArea11(tc.height)
 			if result != tc.expected {
 				t.Errorf("maxArea(%v) = %d; want %d",
 					tc.height, result, tc.expected)

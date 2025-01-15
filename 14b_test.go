@@ -5,32 +5,7 @@ import (
 )
 
 func longestCommonPrefix14b(strs []string) string {
-	// Longest Common Prefix
-	// Given an array of strings strs.
-	// Determine the longest common prefix in all strings.
-	// Return the longest common prefix.
-
-	// Check input min edge cases.
-	if len(strs) == 0 {
-		return ""
-	}
-	if len(strs) == 1 {
-		return strs[0]
-	}
-
-	fstWrd := strs[0]
-	// Iterate through all character of first word.
-	for idx := 0; idx < len(fstWrd); idx++ {
-		curChr := fstWrd[idx]
-		// Iterate through remaining strings.
-		for _, str := range strs {
-			// Check exit conditions.
-			if idx >= len(str) || curChr != str[idx] {
-				return fstWrd[:idx]
-			}
-		}
-	}
-	return fstWrd
+	return ""
 }
 
 func TestLongestCommonPrefix14b(t *testing.T) {

@@ -5,38 +5,10 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the array nums. We iterate through the array once.
-// Space complexity: O(1), constant additional space used.
+// Time complexity:
+// Space complexity:
 func removeDuplicates26b(nums []int) int {
-	// Remove Duplicates from Sorted Array
-	// Given a sort-ascending integer array nums.
-	// Remove duplicates in-place.
-	// One unique element.
-	// Return the number of unique elements.
-	// Use a two-pointer technique.
-
-	// Define allowed unique elements.
-	const unq_cnt = 1
-
-	// Check min edge case.
-	if len(nums) <= unq_cnt {
-		return len(nums)
-	}
-
-	// Initialize variables.
-	lft := unq_cnt
-
-	// Iterate through nums.
-	for rht := unq_cnt; rht < len(nums); rht++ {
-		// Check for unique element at distance.
-		if nums[rht] != nums[lft-unq_cnt] {
-			// Move unique value from right to left.
-			nums[lft] = nums[rht]
-			lft++
-		}
-	}
-
-	return lft
+	return 0
 }
 
 func TestRemoveDuplicates26b(t *testing.T) {

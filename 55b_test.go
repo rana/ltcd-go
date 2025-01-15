@@ -3,36 +3,7 @@ package main
 import "testing"
 
 func canJump55b(nums []int) bool {
-	// Jump Game
-	// Given an integer array nums.
-	// Determine whether you can reach last index.
-	// Return true if condition met.
-	// Conditions:
-	// * Array element is a maximum jump length.
-	// * May jump less than max if it helps.
-	// Use a local optimization "greedy" approach.
-
-	maxRch := 0
-
-	for idx, num := range nums {
-		// Check fail condition.
-		if idx > maxRch {
-			return false
-		}
-
-		// Update max reach.
-		curRch := idx + num
-		if curRch > maxRch {
-			maxRch = curRch
-		}
-
-		// Check success condition.
-		if maxRch >= len(nums)-1 {
-			return true
-		}
-	}
-
-	return true
+	return false
 }
 
 func TestCanJump55b(t *testing.T) {

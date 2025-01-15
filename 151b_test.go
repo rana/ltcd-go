@@ -1,27 +1,11 @@
 package main
 
 import (
-	"strings"
 	"testing"
 )
 
 func reverseWords151b(s string) string {
-	// Reverse Words in a String
-	// Given a string s.
-	// Reverse words.
-	// Return a concatenated string of reversed words.
-	// Use a two-pointer technique.
-	// Conditions:
-	// * Leading and trailing spaces may be present.
-
-	wrds := strings.Fields(s)
-	lft, rht := 0, len(wrds)-1
-	for lft < rht {
-		wrds[lft], wrds[rht] = wrds[rht], wrds[lft]
-		lft++
-		rht--
-	}
-	return strings.Join(wrds, " ")
+	return ""
 }
 
 func TestReverseWords151b(t *testing.T) {

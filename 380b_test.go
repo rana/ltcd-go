@@ -1,56 +1,26 @@
 package main
 
 import (
-	"math/rand"
 	"testing"
 )
 
-// Insert Delete GetRandom O(1)
-// Each operation in O(1) time complexity.
-// Use an array and map to acheive.
 type RandomizedSet struct {
-	arr []int
-	mp  map[int]int
 }
 
 func Constructor380b() RandomizedSet {
-	return RandomizedSet{
-		arr: []int{},
-		mp:  make(map[int]int),
-	}
+	return RandomizedSet{}
 }
 
-// Insert if not present. Return true if inserted.
 func (rs *RandomizedSet) Insert(val int) bool {
-	if _, exists := rs.mp[val]; exists {
-		return false
-	}
-
-	rs.mp[val] = len(rs.arr)
-	rs.arr = append(rs.arr, val)
-	return true
+	return false
 }
 
-// Remove val if present. Return true if removed.
 func (rs *RandomizedSet) Remove(val int) bool {
-	idx, exists := rs.mp[val]
-	if !exists {
-		return false
-	}
-
-	// Swap last value with removed value.
-	lstVal := rs.arr[len(rs.arr)-1]
-	rs.mp[lstVal] = idx
-	rs.arr[idx] = lstVal
-	// Remove target value.
-	rs.arr = rs.arr[:len(rs.arr)-1]
-	delete(rs.mp, val)
-	return true
+	return false
 }
 
 func (rs *RandomizedSet) GetRandom() int {
-	rndIdx := rand.Intn(len(rs.arr))
-	return rs.arr[rndIdx]
+	return 0
 }
 
 func TestRandomizedSet380b(t *testing.T) {

@@ -6,33 +6,7 @@ import (
 )
 
 func productExceptSelf238b(nums []int) []int {
-	// Product of Array Except Self
-	// Given and integer array nums.
-	// At each element, calculate the product of the whole array except self.
-	// Return the array of answers.
-	// Conditions:
-	// * Time complexity O(n)
-	// * Do not use division
-	// Use a two-pass approach.
-	// Left to right pass product of prefixes.
-	// Right to left pass product of suffixes and add.
-
-	res := make([]int, len(nums))
-	res[0] = 1
-
-	// Left to right pass of product prefixes.
-	for idx := 1; idx < len(nums); idx++ {
-		res[idx] = res[idx-1] * nums[idx-1]
-	}
-
-	// Right to left pass pf prodcut suffixes and add.
-	rhtPrd := 1
-	for idx := len(nums) - 1; idx >= 0; idx-- {
-		res[idx] *= rhtPrd
-		rhtPrd *= nums[idx]
-	}
-
-	return res
+	return nil
 }
 
 func TestProductExceptSelf238b(t *testing.T) {

@@ -5,40 +5,7 @@ import (
 )
 
 func jump45b(nums []int) int {
-	// Jump Game II
-	// Given an integer array nums.
-	// Determine min number of jumps to last index.
-	// Return min number of jumps.
-	// Conditions:
-	// * Array element is max jump length.
-	// * Can jump less than max.
-	// Use a local optimization "greedy" approach.
-
-	// Check min edge case.
-	if len(nums) <= 1 {
-		return 0
-	}
-
-	jmpCnt := 0
-	curMax, nxtMax := 0, 0
-
-	for idx := 0; idx < len(nums); idx++ {
-		// Calculate nxtMax
-		nxtMax = max(nxtMax, idx+nums[idx])
-
-		// Check completion of current max jump.
-		if idx == curMax {
-			curMax = nxtMax
-			jmpCnt++
-
-			// Check early return
-			if curMax >= len(nums)-1 {
-				break
-			}
-		}
-	}
-
-	return jmpCnt
+	return 0
 }
 
 func TestJump45b(t *testing.T) {

@@ -5,38 +5,10 @@ import (
 	"testing"
 )
 
+// Time complexity:
+// Space complexity:
 func removeDuplicates80b(nums []int) int {
-	// Remove Duplicate from Sorted Array II
-	// Given an integer array nums.
-	// Remove some duplicates.
-	// Conditions:
-	// * Allow two unique element for value.
-	// * Remove invalid values in-place.
-	// * Move invalid values to the right side.
-	// Return the number of valid values.
-	// Use a two-pointer technique.
-	// Move valid values to from right to left.
-
-	// Define the valid unique count.
-	const unq_cnt = 2
-
-	// Check min edge case.
-	if len(nums) <= unq_cnt {
-		return len(nums)
-	}
-
-	// Initialize variable.
-	lft := unq_cnt
-
-	for rht := unq_cnt; rht < len(nums); rht++ {
-		// Check for unique value after gap.
-		if nums[rht] != nums[lft-unq_cnt] {
-			nums[lft] = nums[rht]
-			lft++
-		}
-	}
-
-	return lft
+	return 0
 }
 
 func TestRemoveDuplicates80b(t *testing.T) {

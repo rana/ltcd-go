@@ -5,24 +5,10 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of array nums.
-// Space complexity: O(1), constant additional space used.
+// Time complexity: O(n)
+// Space complexity: O(1)
 func removeElement27b(nums []int, val int) int {
-	// Given an integer array nums.
-	// Given an integer val.
-	// The number of nums not equal to val is k.
-	// Remove in-place val from nums.
-	// The first k values are not equal to val.
-	// Return k
-	// Use a two-pointer technique.
-	lft := 0
-	for rht := 0; rht < len(nums); rht++ {
-		if nums[rht] != val {
-			nums[lft] = nums[rht]
-			lft++
-		}
-	}
-	return lft
+	return 0
 }
 
 func TestRemoveElement27b(t *testing.T) {

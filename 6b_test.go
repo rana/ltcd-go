@@ -9,19 +9,17 @@ func convert6b(s string, numRows int) string {
 	// Zigzag Conversion
 	// Given a string s.
 	// Given an integer numRows.
-	// Transform string to zigzag pattern.
-	// Return sigzag string.
-	// Conditions:
-	// * Zigzag descends until last row, then ascends til first row.
-	// * Repeat descend ascend until characters complete.
+	// Transform the string into a zigzag pattern.
+	// Return the transformed string.
+	// Pattern recognition.
 	// Use an array of string builders.
 
-	if numRows == 1 || len(s) <= numRows {
+	if len(s) <= numRows {
 		return s
 	}
 
 	rows := make([]strings.Builder, numRows)
-	curRow, dir := 0, 1
+	dir, curRow := 1, 0
 	for _, chr := range s {
 		rows[curRow].WriteRune(chr)
 		if curRow == 0 {
@@ -31,7 +29,6 @@ func convert6b(s string, numRows int) string {
 		}
 		curRow += dir
 	}
-
 	var res strings.Builder
 	for _, row := range rows {
 		res.WriteString(row.String())

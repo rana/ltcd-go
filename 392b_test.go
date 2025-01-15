@@ -3,26 +3,7 @@ package main
 import "testing"
 
 func isSubsequence392b(s string, t string) bool {
-	// Is Subsequence
-	// Given strings s and t.
-	// Determine whether s is a subsequence in t.
-	// Return true if condition met.
-	// Use a two-pointer technique.
-	sLen, tLen := len(s), len(t)
-	if sLen == 0 {
-		return true
-	}
-	if tLen == 0 {
-		return false
-	}
-	sIdx, tIdx := 0, 0
-	for sIdx < sLen && tIdx < tLen {
-		if s[sIdx] == t[tIdx] {
-			sIdx++
-		}
-		tIdx++
-	}
-	return sIdx == sLen
+	return false
 }
 
 func TestIsSubsequence392b(t *testing.T) {

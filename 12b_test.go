@@ -1,46 +1,11 @@
 package main
 
 import (
-	"strings"
 	"testing"
 )
 
 func intToRoman12b(num int) string {
-	// Integer to Roman
-	// Given an integer num.
-	// Transform the integer to a roman numeral string.
-	// Return the roman numeral string.
-	// Use local optimization "greedy" approach.
-	// Use a sort-descending integer-symbol table.
-	// Table includes numeral combinations.
-	// Roman numerals: I V X L C D M
-
-	vps := []struct {
-		val int
-		sym string
-	}{
-		{1000, "M"},
-		{900, "CM"},
-		{500, "D"},
-		{400, "CD"},
-		{100, "C"},
-		{90, "XC"},
-		{50, "L"},
-		{40, "XL"},
-		{10, "X"},
-		{9, "IX"},
-		{5, "V"},
-		{4, "IV"},
-		{1, "I"},
-	}
-	var res strings.Builder
-	for _, vp := range vps {
-		for num >= vp.val {
-			res.WriteString(vp.sym)
-			num -= vp.val
-		}
-	}
-	return res.String()
+	return ""
 }
 
 func TestIntToRoman12b(t *testing.T) {

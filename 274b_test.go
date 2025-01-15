@@ -1,28 +1,11 @@
 package main
 
 import (
-	"sort"
 	"testing"
 )
 
 func hIndex274b(ctes []int) int {
-	// H-Index
-	// Given an integer array ctes.
-	// Determine the H-Index.
-	// Return the H-Index.
-	// Conditions:
-	// * H-Index is 1-based.
-	// * H-Index element is great or equal to 1-based index.
-	// * Select maximum
-	// Use sort-descending.
-
-	sort.Sort(sort.Reverse(sort.IntSlice(ctes)))
-	for idx, cte := range ctes {
-		if cte < idx+1 {
-			return idx
-		}
-	}
-	return len(ctes)
+	return 0
 }
 
 func TestHIndex274b(t *testing.T) {

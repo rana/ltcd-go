@@ -2,36 +2,10 @@ package main
 
 import "testing"
 
-// Time complexity: O(n), n is the length of the array.
-// Space complexity: O(1), constant additional space used.
+// Time complexity:
+// Space complexity:
 func majorityElement169b(nums []int) int {
-	// Majority Element
-	// Given and array nums.
-	// Determine the majority element.
-	// Return the majority element.
-	// Majority element appears more than len(nums)/2.
-	// Use Boyer-Moore Voting algorithm.
-
-	// Initialize variables.
-	can, cnt := nums[0], 0
-
-	// Iterate through nums.
-	for _, num := range nums {
-		// Check whether to set candidate.
-		if cnt == 0 {
-			can = num
-		}
-
-		// Check count adjustment.
-		if can == num {
-			cnt++
-		} else {
-			cnt--
-		}
-	}
-
-	// Candidate is now majority element.
-	return can
+	return 0
 }
 
 func TestMajorityElement169b(t *testing.T) {

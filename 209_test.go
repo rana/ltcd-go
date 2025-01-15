@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n), n is the length of the `nums` array.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/cc616183-8721-48b3-9d08-62da32e71d02
-func minSubArrayLen(tgt int, nums []int) int {
+func minSubArrayLen209(tgt int, nums []int) int {
 	// Minimum Size Subarray Sum
 	// Given an array of positive integers `nums`.
 	// Given a positive integer `tgt`.
@@ -19,7 +19,7 @@ func minSubArrayLen(tgt int, nums []int) int {
 	// Use a sliding window two-pointer technique.
 
 	// Check for input minimum edge case.
-	if len(nums) == tgt {
+	if len(nums) == 0 {
 		return 0
 	}
 
@@ -58,8 +58,7 @@ func minSubArrayLen(tgt int, nums []int) int {
 	return minLen
 }
 
-// Test cases
-func TestMinSubArrayLen(t *testing.T) {
+func TestMinSubArrayLen209(t *testing.T) {
 	tests := []struct {
 		name     string
 		tgt      int
@@ -106,7 +105,7 @@ func TestMinSubArrayLen(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := minSubArrayLen(tc.tgt, tc.nums)
+			got := minSubArrayLen209(tc.tgt, tc.nums)
 			if got != tc.expected {
 				t.Errorf("minSubArrayLen(%d, %v) = %d; want %d",
 					tc.tgt, tc.nums, got, tc.expected)

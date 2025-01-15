@@ -1,42 +1,13 @@
 package main
 
 import (
-	"math"
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the prcs array.
-// Space complexity: O(1), constant additional space used.
+// Time complexity:
+// Space complexity:
 func maxProfit121b(prcs []int) int {
-	// Best Time to Buy and Sell Stock
-	// Given an integer array prcs.
-	// Determine the maximum profit.
-	// Return the maximum profit.
-	// Conditions:
-	// * Buy once and sell once.
-	// Use a local optimization "greedy" strategy.
-
-	// Initialize variables.
-	min_prc := math.MaxInt64
-	max_prf := 0
-
-	// Iterate through prices.
-	for _, prc := range prcs {
-		// Check for min price.
-		if prc < min_prc {
-			min_prc = prc
-		} else {
-			// Calculate current profit.
-			prf := prc - min_prc
-
-			// Check max profit.
-			if prf > max_prf {
-				max_prf = prf
-			}
-		}
-	}
-
-	return max_prf
+	return 0
 }
 
 func TestMaxProfit121b(t *testing.T) {

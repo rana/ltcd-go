@@ -5,34 +5,10 @@ import (
 	"testing"
 )
 
+// Time complexity:
+// Space complexity:
 func rotate189b(nums []int, k int) {
-	// Rotate Array
-	// Given an integer array nums.
-	// Given an integer k.
-	// Rotate array to the right by k.
-	// Use a reverse function.
-	// Call reverse three times.
 
-	// Initialize variables.
-	n := len(nums)
-	k = k % n
-
-	// Reverse whole array.
-	reverse189b(nums, 0, n-1)
-
-	// Reverse up to k.
-	reverse189b(nums, 0, k-1)
-
-	// Reverse from k to end.
-	reverse189b(nums, k, n-1)
-}
-
-func reverse189b(nums []int, lft, rht int) {
-	for lft < rht {
-		nums[lft], nums[rht] = nums[rht], nums[lft]
-		lft++
-		rht--
-	}
 }
 
 func TestRotate189b(t *testing.T) {
