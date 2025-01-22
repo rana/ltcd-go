@@ -5,33 +5,13 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n^2), n is the side of the matrix. We traverse an inner loop and outer loop twice.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/4df883e2-4252-4fb0-b370-9eb3bce06f6d
-func rotate48(mtx [][]int) {
-	// Rotate Image
-	// Given an NxN matrix mtx.
-	// Rotate clockwise 90 degrees in-place.
-	// Use transpose matrix and reverse rows operations.
+// Time complexity:
+// Space complexity:
+func rotate48b(mtx [][]int) {
 
-	n := len(mtx)
-
-	// Transpose matrix.
-	for row := 0; row < n; row++ {
-		for col := row; col < n; col++ {
-			mtx[row][col], mtx[col][row] = mtx[col][row], mtx[row][col]
-		}
-	}
-
-	// Reverse rows.
-	for row := 0; row < n; row++ {
-		for col := 0; col < n/2; col++ {
-			mtx[row][col], mtx[row][n-1-col] = mtx[row][n-1-col], mtx[row][col]
-		}
-	}
 }
 
-func TestRotate48(t *testing.T) {
+func TestRotate48b(t *testing.T) {
 	tests := []struct {
 		name string
 		mtx  [][]int
@@ -64,7 +44,7 @@ func TestRotate48(t *testing.T) {
 			}
 
 			// Call rotate function
-			rotate48(input)
+			rotate48b(input)
 
 			// Compare with expected result
 			if !reflect.DeepEqual(input, tt.want) {

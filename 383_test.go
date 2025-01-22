@@ -5,7 +5,7 @@ import "testing"
 // Time complexity: O(m + n), m is the length of magazine. n is the length of note. We iterate through each string once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/25b2204e-ba1d-4a47-a8f1-0a1196b3ac98
-func canConstruct(note string, mag string) bool {
+func canConstruct383(note string, mag string) bool {
 	// Ransom Note
 	// Given two string `note` and `mag`.
 	// Determine whether letters from mag can construct note.
@@ -32,8 +32,7 @@ func canConstruct(note string, mag string) bool {
 	return true
 }
 
-// Unit Tests
-func TestCanConstruct(t *testing.T) {
+func TestCanConstruct383(t *testing.T) {
 	tests := []struct {
 		name string
 		note string
@@ -80,7 +79,7 @@ func TestCanConstruct(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := canConstruct(tc.note, tc.mag)
+			got := canConstruct383(tc.note, tc.mag)
 			if got != tc.want {
 				t.Errorf("canConstruct(%q, %q) = %v, want %v",
 					tc.note, tc.mag, got, tc.want)

@@ -8,7 +8,7 @@ import (
 // Time complexity: O(m * n), m and n are dimensions of the matrix. We traverse teh matrix once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/ccd4871c-08d7-4372-a9c2-6ec51c6ca95c
-func spiralOrder(mtx [][]int) []int {
+func spiralOrder54(mtx [][]int) []int {
 	// Spiral Matrix
 	// Given a matrix `mtx`.
 	// Traverse the matrix in spiral order.
@@ -60,7 +60,7 @@ func spiralOrder(mtx [][]int) []int {
 	return res
 }
 
-func TestSpiralOrder(t *testing.T) {
+func TestSpiralOrder54(t *testing.T) {
 	tests := []struct {
 		name string
 		mtx  [][]int
@@ -90,7 +90,7 @@ func TestSpiralOrder(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := spiralOrder(tt.mtx)
+			got := spiralOrder54(tt.mtx)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("spiralOrder() = %v, want %v", got, tt.want)
 			}

@@ -5,7 +5,7 @@ import "testing"
 // Time complexity: O(m * n), m and n are the matrix dimensions. We traverse the array twice. Once for determining zero presence. A second time to set zeros.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/8b895b48-7701-4bb0-a48a-da43537a00cf
-func setZeroes(mtx [][]int) {
+func setZeroes73(mtx [][]int) {
 	// Set Matrix Zeroes
 	// Given an MxN integer matrix.
 	// Set whole row and whole column zero if an element is zero.
@@ -75,8 +75,7 @@ func setZeroes(mtx [][]int) {
 	}
 }
 
-// Unit tests
-func TestSetZeroes(t *testing.T) {
+func TestSetZeroes73(t *testing.T) {
 	tests := []struct {
 		name string
 		mtx  [][]int
@@ -118,7 +117,7 @@ func TestSetZeroes(t *testing.T) {
 				copy(mtx[i], tt.mtx[i])
 			}
 
-			setZeroes(mtx)
+			setZeroes73(mtx)
 
 			// Compare result with expected output
 			for i := range tt.want {

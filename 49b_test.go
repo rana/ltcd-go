@@ -2,42 +2,13 @@ package main
 
 import "testing"
 
-// Time complexity: O(n * k), n is the length of the strs array. k is the maximum string length. We traverse the array once.
-// Space complexity: O(n * k), we store each word in a map.
-func groupAnagrams(strs []string) [][]string {
-	// Group Anagrams
-	// Given an array of strings strs.
-	// The strings are anagrams.
-	// Group string by anagrams.
-	// Return an array of groups.
-	// Condition:
-	//	* strs is lowercase English letters.
-	// Use a frquency counter array as a map key to groups.
-
-	grpMap := make(map[[26]int][]string)
-
-	// Iterate through each string.
-	for _, str := range strs {
-		// Create a character frequency counter for the current string.
-		var frq [26]int
-		for _, chr := range str {
-			frq[chr-'a']++
-		}
-
-		// Add the current string to the group.
-		grpMap[frq] = append(grpMap[frq], str)
-	}
-
-	// Transform groups to an array for return.
-	var res [][]string
-	for _, grp := range grpMap {
-		res = append(res, grp)
-	}
-
-	return res
+// Time complexity:
+// Space complexity:
+func groupAnagrams49b(strs []string) [][]string {
+	return nil
 }
 
-func TestGroupAnagrams(t *testing.T) {
+func TestGroupAnagrams49b(t *testing.T) {
 	tests := []struct {
 		name string
 		strs []string
@@ -75,7 +46,7 @@ func TestGroupAnagrams(t *testing.T) {
 		name string
 		fn   func([]string) [][]string
 	}{
-		{"Count Method", groupAnagrams},
+		{"Count Method", groupAnagrams49b},
 	}
 
 	for _, impl := range implementations {
@@ -88,7 +59,7 @@ func TestGroupAnagrams(t *testing.T) {
 
 				// Verify each group contains anagrams
 				for _, grp := range got {
-					if !areAnagrams(grp) {
+					if !areAnagrams49b(grp) {
 						t.Errorf("group %v contains non-anagrams", grp)
 					}
 				}
@@ -98,7 +69,7 @@ func TestGroupAnagrams(t *testing.T) {
 }
 
 // Helper function to verify if strings are anagrams
-func areAnagrams(strs []string) bool {
+func areAnagrams49b(strs []string) bool {
 	if len(strs) <= 1 {
 		return true
 	}

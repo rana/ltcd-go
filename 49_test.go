@@ -23,7 +23,7 @@ func groupAnagrams49(strs []string) [][]string {
 
 	// Iterate through each string.
 	for _, str := range strs {
-		// Create a frequency counter array for the current wtring.
+		// Create a frequency counter array for the current string.
 		var frq [26]int
 		for _, chr := range str {
 			frq[chr-'a']++
