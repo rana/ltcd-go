@@ -5,32 +5,9 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n), n is the length of the nums array. We iterate through the array once.
-// Space complexity: O(n), up to n number-index pairs stored in a map.
+// Time complexity:
+// Space complexity:
 func twoSum(nums []int, tgt int) []int {
-	// Two Sum
-	// Given an integer array nums.
-	// Given an integer tgt.
-	// Find two numbers in nums which sum to tgt.
-	// Return the number indexes.
-	// Store a number to index mapping for seen values.
-	// Check with the complement of the current number.
-
-	// Initialize a complement map.
-	cmp := make(map[int]int)
-
-	// Iterate through each number.
-	for idx, num := range nums {
-		// Check whether complement already encountered.
-		if prvIdx, exists := cmp[tgt-num]; exists {
-			return []int{prvIdx, idx}
-		}
-
-		// Store current number -> index mapping.
-		cmp[num] = idx
-	}
-
-	// No solution.
 	return nil
 }
 

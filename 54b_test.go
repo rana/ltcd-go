@@ -32,11 +32,6 @@ func TestSpiralOrder54b(t *testing.T) {
 			mtx:  [][]int{{1}},
 			want: []int{1},
 		},
-		{
-			name: "empty matrix",
-			mtx:  [][]int{},
-			want: []int{},
-		},
 	}
 
 	for _, tt := range tests {

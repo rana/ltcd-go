@@ -2,42 +2,10 @@ package main
 
 import "testing"
 
-// Time complexity: O((logn)^2). One iteration within sumOfSquares is logn. There are logn iterations within sumOfSquares. Using log base 10.
-// Space complexity: O(1), constant additional space used.
+// Time complexity: O(logn^2)
+// Space complexity: O(1)
 func isHappy(num int) bool {
-	// Happy Number
-	// Given an integer n.
-	// Reduce the number to 1; or, detect infinite cycle.
-	// Return true if number equals 1.
-	// Conditions:
-	//	* Reduce number to sum of square of digits.
-	//	* Repeat until equal to 1; or, infinite cycle.
-	// Use a helper function to reduce number.
-	// Use Floyd's Tortoise and Hare to detect cycle.
-
-	// Initialize cycle detection variables.
-	slo, fst := num, num
-
-	for {
-		slo = sumOfSquares(slo)
-		fst = sumOfSquares(sumOfSquares(fst))
-		if fst == 1 {
-			return true
-		}
-		if fst == slo {
-			return false
-		}
-	}
-}
-
-func sumOfSquares(num int) int {
-	sum := 0
-	for num > 0 {
-		dig := num % 10
-		sum += dig * dig
-		num /= 10
-	}
-	return sum
+	return false
 }
 
 func TestBothApproaches(t *testing.T) {

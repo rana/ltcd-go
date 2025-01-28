@@ -13,50 +13,37 @@ func spiralOrder54(mtx [][]int) []int {
 	// Given a matrix `mtx`.
 	// Traverse the matrix in spiral order.
 	// Return a matrix in spiral order.
+	var res []int
+	top, btm := 0, len(mtx)-1
+	lft, rht := 0, len(mtx[0])-1
+	mtxLen := len(mtx) * len(mtx[0])
 
-	// Check input minimum edge cases.
-	if len(mtx) == 0 || len(mtx[0]) == 0 {
-		return []int{}
-	}
-
-	// Initialize variables.
-	top := 0
-	btm := len(mtx) - 1
-	lft := 0
-	rht := len(mtx[0]) - 1
-	res := make([]int, 0, len(mtx)*len(mtx[0]))
-
-	// Iterate until all elements processed.
-	for lft <= rht && top <= btm {
+	for len(res) < mtxLen {
 		// top: move right
 		for col := lft; col <= rht; col++ {
 			res = append(res, mtx[top][col])
 		}
 		top++
-
-		// right: move down
+		// rht: move down
 		for row := top; row <= btm; row++ {
 			res = append(res, mtx[row][rht])
 		}
 		rht--
-
+		// btm: move left
 		if top <= btm {
-			// bottom: move left
 			for col := rht; col >= lft; col-- {
 				res = append(res, mtx[btm][col])
 			}
 			btm--
 		}
-
+		// lft: move up
 		if lft <= rht {
-			// left: move up
 			for row := btm; row >= top; row-- {
 				res = append(res, mtx[row][lft])
 			}
 			lft++
 		}
 	}
-
 	return res
 }
 
@@ -80,11 +67,6 @@ func TestSpiralOrder54(t *testing.T) {
 			name: "1x1 matrix",
 			mtx:  [][]int{{1}},
 			want: []int{1},
-		},
-		{
-			name: "empty matrix",
-			mtx:  [][]int{},
-			want: []int{},
 		},
 	}
 

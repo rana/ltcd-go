@@ -2,38 +2,13 @@ package main
 
 import "testing"
 
-// Time complexity: O(n), n is the length of the nums array. We traverse the array once.
-// Space complexity: O(min(n, k)), up to k num-idx pairs are stored in a map.
-func containsNearbyDuplicate(nums []int, k int) bool {
-	// Contains Duplicate II
-	// Given an integer array nums.
-	// Given an integer k.
-	// Determine whether a duplicate exists within
-	// a window with length k.
-	// Notice that the array is not sorted.
-	// Use a num-idx map for window k.
-
-	// Initialize num-idx map.
-	numIdx := make(map[int]int)
-
-	// Iterate through each number in nums.
-	for idx, num := range nums {
-		// Check whether we've seen this integer before.
-		if prvIdx, exists := numIdx[num]; exists {
-			// Check if window condition met.
-			if idx-prvIdx <= k {
-				return true
-			}
-		}
-
-		// Store num-idx mapping
-		numIdx[num] = idx
-	}
-
+// Time complexity:
+// Space complexity:
+func containsNearbyDuplicate219b(nums []int, k int) bool {
 	return false
 }
 
-func TestContainsNearbyDuplicate(t *testing.T) {
+func TestContainsNearbyDuplicate219b(t *testing.T) {
 	tests := []struct {
 		name string
 		nums []int
@@ -80,7 +55,7 @@ func TestContainsNearbyDuplicate(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := containsNearbyDuplicate(tt.nums, tt.k); got != tt.want {
+			if got := containsNearbyDuplicate219b(tt.nums, tt.k); got != tt.want {
 				t.Errorf("containsNearbyDuplicate() = %v, want %v", got, tt.want)
 			}
 		})

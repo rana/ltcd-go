@@ -2,8 +2,8 @@ package main
 
 import "testing"
 
-// Time complexity: O(n)
-// Space complexity: O(min(m, n)), m is lenght of charset. n is length of string s.
+// Time complexity:
+// Space complexity:
 func lengthOfLongestSubstring3b(s string) int {
 	return 0
 }

@@ -2,52 +2,13 @@ package main
 
 import "testing"
 
-func longestConsecutive(nums []int) int {
-	// Longest Consecutive Sequence
-	// Given an unsorted integer array nums.
-	// Determine the longest length of consecutive integers.
-	// Return the longest length.
-	// Conditions:
-	//	* Time complexity: O(n)
-	// Use a hash set to achieve O(n) time.
-	// Search for sequence starts.
-
-	// Initialize a hash set.
-	numSet := make(map[int]bool)
-	for _, num := range nums {
-		numSet[num] = true
-	}
-
-	// Initialize max length.
-	maxLen := 0
-
-	// Iterate through nums looking for sequence starts.
-	for _, num := range nums {
-		// Skip non-sequence starts.
-		if numSet[num-1] {
-			continue
-		}
-
-		// Found a sequence start.
-		curLen := 1
-		curNum := num + 1
-
-		// Measure the length of the sequence.
-		for numSet[curNum] {
-			curLen++
-			curNum++
-		}
-
-		// Check whether to update max length.
-		if curLen > maxLen {
-			maxLen = curLen
-		}
-	}
-
-	return maxLen
+// Time complexity:
+// Space complexity:
+func longestConsecutive128b(nums []int) int {
+	return 0
 }
 
-func TestLongestConsecutive(t *testing.T) {
+func TestLongestConsecutive128b(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     []int
@@ -92,7 +53,7 @@ func TestLongestConsecutive(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := longestConsecutive(tc.nums)
+			got := longestConsecutive128b(tc.nums)
 			if got != tc.expected {
 				t.Errorf("longestConsecutive(%v) = %v; want %v",
 					tc.nums, got, tc.expected)

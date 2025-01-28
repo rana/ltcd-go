@@ -1,55 +1,11 @@
 package main
 
 import (
-	"strconv"
-	"strings"
 	"testing"
 )
 
 func summaryRanges228b(nums []int) []string {
-	// Summary Ranges
-	// Given a sorted, unique integer array nums.
-	// Determine the smallest list of ranges.
-	// Return a string array of formatted ranges.
-	// A single integer is a valid range.
-	// Use a helper function to format the range.
-	// Look for consecutive sequences ends.
-
-	var res []string
-	numLen := len(nums)
-
-	// Check input min edge case.
-	if numLen == 0 {
-		return res
-	}
-
-	lft := 0
-	for rht := 0; rht < numLen; rht++ {
-		// Check for sequence end.
-		if rht+1 == numLen || nums[rht+1] != nums[rht]+1 {
-			// Found sequence end.
-			// Write current summary range.
-			res = append(res, formatRange228b(nums[lft], nums[rht]))
-			// Move left pointer forward.
-			lft = rht + 1
-		}
-	}
-
-	return res
-}
-
-func formatRange228b(fst, lst int) string {
-	if fst == lst {
-		return strconv.Itoa(fst)
-	}
-
-	// Use a string builder.
-	var bld strings.Builder
-	bld.WriteString(strconv.Itoa(fst))
-	bld.WriteString("->")
-	bld.WriteString(strconv.Itoa(lst))
-
-	return bld.String()
+	return nil
 }
 
 func TestSummaryRanges228b(t *testing.T) {
