@@ -7,44 +7,17 @@ import (
 
 func insert57b(invs [][]int, newInv []int) [][]int {
 	// Insert Interval
-	// Given an array of non-overlapping invervals.
-	// An interval is a two-integer array; start at index 0, end at index 1.
-	// Array is sorted ascending by interval start.
-	// Insert a new interval.
-	// Return an array of intervals after insertion.
+	// Given an array of sort-ascending non-overlapping intervals invs.
+	// Given a interval newInv.
+	// Insert new interval.
+	// Return new array of intervals with newInv inserted.
 	// Conditions:
-	//	* Maintains sort ascending.
-	//	* Maintain non-overlapping. Merge if necessary.
-	//	* Can create a new array for processing and return.
+	// * Intervals are sort-ascending by start time.
+	// * Insert maintain sort-ascending.
+	// * No overlapping intervals after insert.
+	// * Can return new output array.
 
-	var res [][]int
-	idx := 0
-	invsLen := len(invs)
-
-	// Phase 1: Add intervals which end before new interval starts.
-	for idx < invsLen && invs[idx][1] < newInv[0] {
-		res = append(res, invs[idx])
-		idx++
-	}
-
-	// Phase 2: Merge into new interval as necessary.
-	// Overlap: first end >= second start.
-	for idx < invsLen && newInv[1] >= invs[idx][0] {
-		// Expand new interval
-		newInv[0] = min(newInv[0], invs[idx][0])
-		newInv[1] = max(newInv[1], invs[idx][1])
-		idx++
-	}
-	// Append new interval after merging.
-	res = append(res, newInv)
-
-	// Phase 3: Add remaining intervals.
-	for idx < invsLen {
-		res = append(res, invs[idx])
-		idx++
-	}
-
-	return res
+	return nil
 }
 
 func TestInsert57b(t *testing.T) {
