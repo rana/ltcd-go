@@ -2,51 +2,30 @@ package main
 
 import "testing"
 
-// Min Stack
-// Design a stack the supports O(1) operations:
-// Push, Pop, Top, GetMin.
-// Use two stacks to achieve result.
-
-type MinStack155 struct {
-	vals []int
-	mins []int
+type MinStack155b struct {
 }
 
-func Constructor155() MinStack155 {
-	return MinStack155{
-		vals: []int{},
-		mins: []int{},
-	}
+func Constructor155b() MinStack155b {
+	return MinStack155b{}
 }
 
-func (s *MinStack155) Push(val int) {
-	s.vals = append(s.vals, val)
+func (s *MinStack155b) Push(val int) {
 
-	if len(s.mins) == 0 {
-		s.mins = append(s.mins, val)
-	} else {
-		curMin := s.mins[len(s.mins)-1]
-		if val < curMin {
-			curMin = val
-		}
-		s.mins = append(s.mins, curMin)
-	}
 }
 
-func (s *MinStack155) Pop() {
-	s.vals = s.vals[:len(s.vals)-1]
-	s.mins = s.mins[:len(s.mins)-1]
+func (s *MinStack155b) Pop() {
+
 }
 
-func (s *MinStack155) Top() int {
-	return s.vals[len(s.vals)-1]
+func (s *MinStack155b) Top() int {
+	return 0
 }
 
-func (s *MinStack155) GetMin() int {
-	return s.mins[len(s.mins)-1]
+func (s *MinStack155b) GetMin() int {
+	return 0
 }
 
-func TestMinStack155(t *testing.T) {
+func TestMinStack155b(t *testing.T) {
 	tests := []struct {
 		name     string
 		ops      []string
@@ -75,14 +54,14 @@ func TestMinStack155(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			var stk MinStack155
+			var stk MinStack155b
 			pushIdx := 0
 
 			for i, op := range tc.ops {
 				t.Logf("Operation %d: %s", i, op)
 				switch op {
 				case "MinStack":
-					stk = Constructor155()
+					stk = Constructor155b()
 				case "push":
 					val := tc.vals[pushIdx]
 					t.Logf("Pushing value: %d", val)

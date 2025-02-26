@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n), n is the length of the tkns array. We traverse teh array once.
 // Space complexity: O(n), up to n strings stored on a stack.
 // https://claude.ai/chat/b9a0b6fa-fedf-4218-aabc-2a34e92afcec
-func evalRPN(tkns []string) int {
+func evalRPN150(tkns []string) int {
 	// Evaluate Reverse Polish Notation
 	// Given a string array.
 	// Each string is part of an arithmetic expression.
@@ -58,7 +58,7 @@ func evalRPN(tkns []string) int {
 }
 
 // TestEvalRPN contains test cases for the evalRPN function
-func TestEvalRPN(t *testing.T) {
+func TestEvalRPN150(t *testing.T) {
 	tests := []struct {
 		name string
 		tkns []string
@@ -93,7 +93,7 @@ func TestEvalRPN(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := evalRPN(tt.tkns); got != tt.want {
+			if got := evalRPN150(tt.tkns); got != tt.want {
 				t.Errorf("evalRPN() = %v, want %v", got, tt.want)
 			}
 		})

@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n), n is the length of the string.
 // Space complexity: O(n), up to n characters stored on a stack and string builder.
 // https://claude.ai/chat/ce0d47f6-4722-47ac-aad7-995ce30cf5f3
-func simplifyPath(pth string) string {
+func simplifyPath71(pth string) string {
 	// Simplify Path
 	// Given a string pth.
 	// String pth is an Unix-style absolute file path.
@@ -24,11 +24,6 @@ func simplifyPath(pth string) string {
 	//	* Directories separated by single slash.
 	//	* Does not end with slash unless root directory.
 	//	* Does not contain single or double period.
-
-	// Check input min edge case.
-	if len(pth) == 0 {
-		return "/"
-	}
 
 	// Split and filter string.
 	var stk []string
@@ -65,8 +60,7 @@ func simplifyPath(pth string) string {
 	return bld.String()
 }
 
-// TestSimplifyPath contains test cases for the simplifyPath function
-func TestSimplifyPath(t *testing.T) {
+func TestSimplifyPath71(t *testing.T) {
 	tests := []struct {
 		name string
 		pth  string
@@ -126,7 +120,7 @@ func TestSimplifyPath(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := simplifyPath(tt.pth)
+			got := simplifyPath71(tt.pth)
 			if got != tt.want {
 				t.Errorf("simplifyPath(%q) = %q, want %q", tt.pth, got, tt.want)
 			}

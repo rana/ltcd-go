@@ -2,68 +2,32 @@ package main
 
 import "testing"
 
-// ListNode86 represents a node in a linked list
-type ListNode86 struct {
+// ListNode86b represents a node in a linked list
+type ListNode86b struct {
 	Val  int
-	Next *ListNode86
+	Next *ListNode86b
 }
 
-// Time complexity: O(n), n is the length of the list. We traverse the list once.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/b00c4d5d-bb62-43b3-9502-ed75f80bbd9a
-func partition86(hed *ListNode86, x int) *ListNode86 {
-	// Partition List
-	// Given the head of a linked list.
-	// Given an integer x.
-	// Partition the list at x.
-	// Conditions:
-	//	* Nodes < x come before nodes >= x.
-	//	* Preserve original list node order.
-	// Use two intermediate lists to partition.
-
-	// Check input min edge cases.
-	if hed == nil || hed.Next == nil {
-		return hed
-	}
-
-	// Initialize variables.
-	smlHed, lrgHed := &ListNode86{}, &ListNode86{}
-	smlCur, lrgCur := smlHed, lrgHed
-
-	// Iterate through original list and partition.
-	cur := hed
-	for cur != nil {
-		if cur.Val < x {
-			smlCur.Next = cur
-			smlCur = cur
-		} else {
-			lrgCur.Next = cur
-			lrgCur = cur
-		}
-		cur = cur.Next
-	}
-
-	// Connect two lists.
-	smlCur.Next = lrgHed.Next
-	lrgCur.Next = nil
-
-	return smlHed.Next
+// Time complexity:
+// Space complexity:
+func partition86b(hed *ListNode86b, x int) *ListNode86b {
+	return nil
 }
 
-func TestPartition86(t *testing.T) {
-	createList := func(vals []int) *ListNode86 {
+func TestPartition86b(t *testing.T) {
+	createList := func(vals []int) *ListNode86b {
 		if len(vals) == 0 {
 			return nil
 		}
-		hed := &ListNode86{Val: vals[0]}
+		hed := &ListNode86b{Val: vals[0]}
 		cur := hed
 		for idx := 1; idx < len(vals); idx++ {
-			cur.Next = &ListNode86{Val: vals[idx]}
+			cur.Next = &ListNode86b{Val: vals[idx]}
 			cur = cur.Next
 		}
 		return hed
 	}
-	listToSlice := func(hed *ListNode86) []int {
+	listToSlice := func(hed *ListNode86b) []int {
 		var res []int
 		cur := hed
 		for cur != nil {
@@ -120,7 +84,7 @@ func TestPartition86(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			list := createList(tt.list)
-			got := partition86(list, tt.x)
+			got := partition86b(list, tt.x)
 			gotSlice := listToSlice(got)
 
 			if len(gotSlice) != len(tt.want) {

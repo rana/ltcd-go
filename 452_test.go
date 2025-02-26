@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n log n), n is the length of the invs array. We quicksort the array on for O(n log n). We traverse the array once for O(n).
 // Space complexity: O(log n), quicksort recursive call use call stack space of O(log n).
 // https://claude.ai/chat/a3cd11ad-5576-48e3-ab70-dc27df0be1cf
-func findMinArrowShots(invs [][]int) int {
+func findMinArrowShots452(invs [][]int) int {
 	// Minimum Number of Arrows to Burst Ballons
 	// Given an interval array invs.
 	// An interval is a two-integer array.
@@ -20,11 +20,6 @@ func findMinArrowShots(invs [][]int) int {
 	// Sort intervals by interval end point.
 	// Count arrow by transition between two non-overlapping ballons.
 	// Use a local optimization "greedy" approach.
-
-	// Check for input min edge case.
-	if len(invs) == 0 {
-		return 0
-	}
 
 	// Sort intervals by end point for optimal arrow counting.
 	sort.Slice(invs, func(i, j int) bool {
@@ -51,7 +46,7 @@ func findMinArrowShots(invs [][]int) int {
 }
 
 // Unit Tests
-func TestFindMinArrowShots(t *testing.T) {
+func TestFindMinArrowShots452(t *testing.T) {
 	tests := []struct {
 		name     string
 		points   [][]int
@@ -79,11 +74,6 @@ func TestFindMinArrowShots(t *testing.T) {
 			expected: 2,
 		},
 		{
-			name:     "Empty input",
-			points:   [][]int{},
-			expected: 0,
-		},
-		{
 			name: "Single balloon",
 			points: [][]int{
 				{1, 2},
@@ -108,7 +98,7 @@ func TestFindMinArrowShots(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := findMinArrowShots(tc.points)
+			got := findMinArrowShots452(tc.points)
 			if got != tc.expected {
 				t.Errorf("findMinArrowShots() = %v, want %v", got, tc.expected)
 			}

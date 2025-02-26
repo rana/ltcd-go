@@ -2,63 +2,32 @@ package main
 
 import "testing"
 
-// ListNode21 definition for singly-linked list
-type ListNode21 struct {
+// ListNode21b definition for singly-linked list
+type ListNode21b struct {
 	Val  int
-	Next *ListNode21
+	Next *ListNode21b
 }
 
-// Time complexity: O(n + m), n and m are the lengths of the lists. We process each node once.
-// Space complexity: O(1), constant additional space used.
-// https://claude.ai/chat/4d8be773-f034-4545-9530-421137a65f51
-func mergeTwoLists21(l1 *ListNode21, l2 *ListNode21) *ListNode21 {
-	// Merge Two Sorted Lists
-	// Given the heads of two sort-ascending linked lists.
-	// Merge the two into one sort-ascending linked list.
-	// Return the head of the merged linked list.
-	// Use a dummy node to simplify edge cases.
-
-	// Initialize variables.
-	dmy := &ListNode21{}
-	cur := dmy
-
-	// Merge while both lists have nodes.
-	for l1 != nil && l2 != nil {
-		if l1.Val <= l2.Val {
-			cur.Next = l1
-			l1 = l1.Next
-		} else {
-			cur.Next = l2
-			l2 = l2.Next
-		}
-		cur = cur.Next
-	}
-
-	// Attached any remaining lists.
-	if l1 != nil {
-		cur.Next = l1
-	}
-	if l2 != nil {
-		cur.Next = l2
-	}
-
-	return dmy.Next
+// Time complexity:
+// Space complexity:
+func mergeTwoLists21b(l1 *ListNode21b, l2 *ListNode21b) *ListNode21b {
+	return nil
 }
 
-func TestMergeTwoLists21(t *testing.T) {
-	createList21 := func(nums []int) *ListNode21 {
+func TestMergeTwoLists21b(t *testing.T) {
+	createList21b := func(nums []int) *ListNode21b {
 		if len(nums) == 0 {
 			return nil
 		}
-		var dmy ListNode21
+		var dmy ListNode21b
 		cur := &dmy
 		for _, num := range nums {
-			cur.Next = &ListNode21{Val: num}
+			cur.Next = &ListNode21b{Val: num}
 			cur = cur.Next
 		}
 		return dmy.Next
 	}
-	listToSlice21 := func(hed *ListNode21) []int {
+	listToSlice21b := func(hed *ListNode21b) []int {
 		var res []int
 		for cur := hed; cur != nil; cur = cur.Next {
 			res = append(res, cur.Val)
@@ -112,9 +81,9 @@ func TestMergeTwoLists21(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			lst1 := createList21(tt.lst1)
-			lst2 := createList21(tt.lst2)
-			got := listToSlice21(mergeTwoLists21(lst1, lst2))
+			lst1 := createList21b(tt.lst1)
+			lst2 := createList21b(tt.lst2)
+			got := listToSlice21b(mergeTwoLists21b(lst1, lst2))
 
 			if len(got) != len(tt.want) {
 				t.Errorf("got len %v, want len %v", len(got), len(tt.want))

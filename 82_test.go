@@ -14,7 +14,7 @@ type ListNode82 struct {
 // Time complexity: O(n), n is the length of the list. We traverse the list once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/54741edd-e21f-42e3-8e18-a7b5c444be10
-func deleteDuplicates(hed *ListNode82) *ListNode82 {
+func deleteDuplicates82(hed *ListNode82) *ListNode82 {
 	// Remove Duplicates from Sorted List II
 	// Given the head of a sorted list.
 	// Remove all nodes with duplicate values.
@@ -52,30 +52,28 @@ func deleteDuplicates(hed *ListNode82) *ListNode82 {
 	return dmy.Next
 }
 
-// For testing purposes
-func createList82(nums []int) *ListNode82 {
-	if len(nums) == 0 {
-		return nil
+func TestDeleteDuplicates82(t *testing.T) {
+	listToSlice := func(hed *ListNode82) []int {
+		res := make([]int, 0) // Initialize with empty slice
+		for cur := hed; cur != nil; cur = cur.Next {
+			res = append(res, cur.Val)
+		}
+		return res
+	}
+	createList := func(nums []int) *ListNode82 {
+		if len(nums) == 0 {
+			return nil
+		}
+
+		hed := &ListNode82{Val: nums[0]}
+		cur := hed
+		for idx := 1; idx < len(nums); idx++ {
+			cur.Next = &ListNode82{Val: nums[idx]}
+			cur = cur.Next
+		}
+		return hed
 	}
 
-	hed := &ListNode82{Val: nums[0]}
-	cur := hed
-	for idx := 1; idx < len(nums); idx++ {
-		cur.Next = &ListNode82{Val: nums[idx]}
-		cur = cur.Next
-	}
-	return hed
-}
-
-func listToSlice82(hed *ListNode82) []int {
-	res := make([]int, 0) // Initialize with empty slice
-	for cur := hed; cur != nil; cur = cur.Next {
-		res = append(res, cur.Val)
-	}
-	return res
-}
-
-func TestDeleteDuplicates(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []int
@@ -115,8 +113,8 @@ func TestDeleteDuplicates(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			hed := createList82(tc.input)
-			got := listToSlice82(deleteDuplicates(hed))
+			hed := createList(tc.input)
+			got := listToSlice(deleteDuplicates82(hed))
 			if !reflect.DeepEqual(got, tc.want) {
 				t.Errorf("input: %v, got: %v, want: %v", tc.input, got, tc.want)
 			}

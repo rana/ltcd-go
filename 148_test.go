@@ -14,7 +14,7 @@ type ListNode struct {
 // Time complexity: O(n log n), O(n) for dividing each level. O(n log n) for recursive stack calls. O(n) for merging each level.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/5108dfca-fd36-44d1-b606-a5b537ab4f42
-func sortList(hed *ListNode) *ListNode {
+func sortList148(hed *ListNode) *ListNode {
 	// Given the head of a linked list.
 	// Sort the list in ascending order.
 	// Return the head of the list.
@@ -43,15 +43,15 @@ func sortList(hed *ListNode) *ListNode {
 	prv.Next = nil
 
 	// Recursively sort left and right halves.
-	lft := sortList(hed)
-	rht := sortList(slw)
+	lft := sortList148(hed)
+	rht := sortList148(slw)
 
 	// Return merged list.
-	return mrgLst(lft, rht)
+	return mrgLst148(lft, rht)
 }
 
-// mrgLst merges two sort-ascending linked lists.
-func mrgLst(lft, rht *ListNode) *ListNode {
+// mrgLst148 merges two sort-ascending linked lists.
+func mrgLst148(lft, rht *ListNode) *ListNode {
 	dmy := &ListNode{}
 	cur := dmy
 
@@ -78,7 +78,27 @@ func mrgLst(lft, rht *ListNode) *ListNode {
 	return dmy.Next
 }
 
-func TestSortList(t *testing.T) {
+func TestSortList148(t *testing.T) {
+	createList := func(nums []int) *ListNode {
+		if len(nums) == 0 {
+			return nil
+		}
+		head := &ListNode{Val: nums[0]}
+		cur := head
+		for i := 1; i < len(nums); i++ {
+			cur.Next = &ListNode{Val: nums[i]}
+			cur = cur.Next
+		}
+		return head
+	}
+	listToSlice := func(head *ListNode) []int {
+		result := []int{}
+		for head != nil {
+			result = append(result, head.Val)
+			head = head.Next
+		}
+		return result
+	}
 	cases := []struct {
 		name     string
 		input    []int
@@ -127,7 +147,7 @@ func TestSortList(t *testing.T) {
 			head := createList(tc.input)
 
 			// Sort the list
-			result := sortList(head)
+			result := sortList148(head)
 
 			// Convert result back to slice for comparison
 			got := listToSlice(result)
@@ -137,29 +157,4 @@ func TestSortList(t *testing.T) {
 			}
 		})
 	}
-}
-
-// Helper function to create linked list from slice
-func createList(nums []int) *ListNode {
-	if len(nums) == 0 {
-		return nil
-	}
-
-	head := &ListNode{Val: nums[0]}
-	cur := head
-	for i := 1; i < len(nums); i++ {
-		cur.Next = &ListNode{Val: nums[i]}
-		cur = cur.Next
-	}
-	return head
-}
-
-// Helper function to convert linked list to slice
-func listToSlice(head *ListNode) []int {
-	result := []int{}
-	for head != nil {
-		result = append(result, head.Val)
-		head = head.Next
-	}
-	return result
 }

@@ -12,7 +12,7 @@ type Node138 struct {
 // Time complexity: O(n), n is the number of nodes in the list. We traverse the list three times.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/12e691a1-bfcc-4c78-9fef-002ea1437c32
-func copyRandomList(hed *Node138) *Node138 {
+func copyRandomList138(hed *Node138) *Node138 {
 	// Copy List with Random Pointer
 	// Given the head of a linked list.
 	// Linked list node has a pointer to a random node.
@@ -56,78 +56,58 @@ func copyRandomList(hed *Node138) *Node138 {
 	for cur != nil {
 		cpy := cur.Next
 		nxt := cpy.Next
-
-		// Update original list.
 		cur.Next = nxt
-
-		// Update coped list.
 		if nxt != nil {
 			cpy.Next = nxt.Next
 		}
-
 		cur = nxt
 	}
 
 	return cpyHed
 }
 
-// For testing purposes
-func createList138(vals [][]int) *Node138 {
-	if len(vals) == 0 {
-		return nil
-	}
-
-	// Create nodes
-	nods := make([]*Node138, len(vals))
-	for idx := range vals {
-		nods[idx] = &Node138{Val: vals[idx][0]}
-	}
-
-	// Set next pointers
-	for idx := 0; idx < len(nods)-1; idx++ {
-		nods[idx].Next = nods[idx+1]
-	}
-
-	// Set random pointers
-	for idx, val := range vals {
-		if val[1] >= 0 {
-			nods[idx].Random = nods[val[1]]
+func TestCopyRandomList138(t *testing.T) {
+	createList := func(vals [][]int) *Node138 {
+		if len(vals) == 0 {
+			return nil
 		}
-	}
-
-	return nods[0]
-}
-
-func compareNodes138(org, cpy *Node138) bool {
-	// Map to store node mapping from original to copy
-	nodMap := make(map[*Node138]*Node138)
-
-	// First pass: build node mapping
-	cur1, cur2 := org, cpy
-	for cur1 != nil {
-		if cur1.Val != cur2.Val {
-			return false
+		nods := make([]*Node138, len(vals))
+		for idx := range vals {
+			nods[idx] = &Node138{Val: vals[idx][0]}
 		}
-		nodMap[cur1] = cur2
-		cur1 = cur1.Next
-		cur2 = cur2.Next
-	}
-
-	// Second pass: verify random pointers
-	cur1, cur2 = org, cpy
-	for cur1 != nil {
-		if (cur1.Random == nil && cur2.Random != nil) ||
-			(cur1.Random != nil && cur2.Random != nodMap[cur1.Random]) {
-			return false
+		for idx := 0; idx < len(nods)-1; idx++ {
+			nods[idx].Next = nods[idx+1]
 		}
-		cur1 = cur1.Next
-		cur2 = cur2.Next
+		for idx, val := range vals {
+			if val[1] >= 0 {
+				nods[idx].Random = nods[val[1]]
+			}
+		}
+		return nods[0]
+	}
+	compareNodes := func(org, cpy *Node138) bool {
+		nodMap := make(map[*Node138]*Node138)
+		cur1, cur2 := org, cpy
+		for cur1 != nil {
+			if cur1.Val != cur2.Val {
+				return false
+			}
+			nodMap[cur1] = cur2
+			cur1 = cur1.Next
+			cur2 = cur2.Next
+		}
+		cur1, cur2 = org, cpy
+		for cur1 != nil {
+			if (cur1.Random == nil && cur2.Random != nil) ||
+				(cur1.Random != nil && cur2.Random != nodMap[cur1.Random]) {
+				return false
+			}
+			cur1 = cur1.Next
+			cur2 = cur2.Next
+		}
+		return true
 	}
 
-	return true
-}
-
-func TestCopyRandomList(t *testing.T) {
 	tests := []struct {
 		name string
 		vals [][]int
@@ -156,11 +136,11 @@ func TestCopyRandomList(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			org := createList138(tc.vals)
-			cpy := copyRandomList(org)
+			org := createList(tc.vals)
+			cpy := copyRandomList138(org)
 
 			// Check if lists are identical but separate
-			if !compareNodes138(org, cpy) {
+			if !compareNodes(org, cpy) {
 				t.Errorf("Lists are not identical")
 			}
 

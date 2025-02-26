@@ -13,7 +13,7 @@ type ListNode19 struct {
 // Time complexity: O(n), n is the length of the list. We traverse the list once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/21591150-5d1e-4c66-9158-766cd58d7890
-func removeNthFromEnd(hed *ListNode19, n int) *ListNode19 {
+func removeNthFromEnd19(hed *ListNode19, n int) *ListNode19 {
 	// Remove Nth Node From End of List
 	// Given the head of a linked list.
 	// Remove the Nth node from the end.
@@ -23,7 +23,7 @@ func removeNthFromEnd(hed *ListNode19, n int) *ListNode19 {
 	// Move the slow pointer prior to the removal nodes.
 
 	// Check input min edge cases.
-	if hed == nil || n <= 0 {
+	if hed == nil {
 		return hed
 	}
 
@@ -33,7 +33,7 @@ func removeNthFromEnd(hed *ListNode19, n int) *ListNode19 {
 	fst := dmy
 
 	// Move the fast pointer forward n nodes.
-	for idx := 0; idx < n; idx++ {
+	for range n {
 		// Check whether list is smaller than n.
 		if fst.Next == nil {
 			return hed
@@ -55,31 +55,28 @@ func removeNthFromEnd(hed *ListNode19, n int) *ListNode19 {
 	return dmy.Next
 }
 
-// Helper function to create linked list from slice
-func createList19(nums []int) *ListNode19 {
-	if len(nums) == 0 {
-		return nil
+func TestRemoveNthFromEnd19(t *testing.T) {
+	createList := func(nums []int) *ListNode19 {
+		if len(nums) == 0 {
+			return nil
+		}
+
+		hed := &ListNode19{Val: nums[0]}
+		cur := hed
+		for i := 1; i < len(nums); i++ {
+			cur.Next = &ListNode19{Val: nums[i]}
+			cur = cur.Next
+		}
+		return hed
+	}
+	listToSlice := func(hed *ListNode19) []int {
+		res := []int{}
+		for cur := hed; cur != nil; cur = cur.Next {
+			res = append(res, cur.Val)
+		}
+		return res
 	}
 
-	hed := &ListNode19{Val: nums[0]}
-	cur := hed
-	for i := 1; i < len(nums); i++ {
-		cur.Next = &ListNode19{Val: nums[i]}
-		cur = cur.Next
-	}
-	return hed
-}
-
-// Helper function to convert list to slice for testing
-func listToSlice19(hed *ListNode19) []int {
-	res := []int{}
-	for cur := hed; cur != nil; cur = cur.Next {
-		res = append(res, cur.Val)
-	}
-	return res
-}
-
-func TestRemoveNthFromEnd(t *testing.T) {
 	tests := []struct {
 		name     string
 		input    []int
@@ -120,9 +117,9 @@ func TestRemoveNthFromEnd(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			input := createList19(tc.input)
-			result := removeNthFromEnd(input, tc.n)
-			got := listToSlice19(result)
+			input := createList(tc.input)
+			result := removeNthFromEnd19(input, tc.n)
+			got := listToSlice(result)
 
 			if !reflect.DeepEqual(got, tc.expected) {
 				t.Errorf("got %v, want %v", got, tc.expected)

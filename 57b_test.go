@@ -6,17 +6,6 @@ import (
 )
 
 func insert57b(invs [][]int, newInv []int) [][]int {
-	// Insert Interval
-	// Given an array of sort-ascending non-overlapping intervals invs.
-	// Given a interval newInv.
-	// Insert new interval.
-	// Return new array of intervals with newInv inserted.
-	// Conditions:
-	// * Intervals are sort-ascending by start time.
-	// * Insert maintain sort-ascending.
-	// * No overlapping intervals after insert.
-	// * Can return new output array.
-
 	return nil
 }
 

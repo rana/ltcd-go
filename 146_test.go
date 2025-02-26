@@ -3,7 +3,7 @@ package main
 import "testing"
 
 // https://claude.ai/chat/8ec09d6f-cc23-4f9d-9837-f8341f760caf
-type LRUCache struct {
+type LRUCache146 struct {
 	// LRU Cache
 	// Design a data structure with least recently used conditions.
 	// Conditions:
@@ -11,10 +11,10 @@ type LRUCache struct {
 	// Use helper function remove, addToFront for LRU logic.
 	// Use a doubly-linked list for `remove` O(1) average time complexity.
 	// Use a map for `get` O(1) average time complexity.
-	cap  int
 	itms map[int]*Node146
 	hed  *Node146
 	tal  *Node146
+	cap  int
 }
 
 // Node146 is a doubly-linked list node.
@@ -25,8 +25,8 @@ type Node146 struct {
 	nxt *Node146
 }
 
-func Constructor146(cap int) LRUCache {
-	return LRUCache{
+func Constructor146(cap int) LRUCache146 {
+	return LRUCache146{
 		cap:  cap,
 		itms: make(map[int]*Node146),
 	}
@@ -36,7 +36,7 @@ func Constructor146(cap int) LRUCache {
 
 // remove removes a node from a doubly-linked list.
 // No map operations.
-func (c *LRUCache) remove(nod *Node146) {
+func (c *LRUCache146) remove(nod *Node146) {
 	// Handle next or head.
 	if nod.prv != nil {
 		// Node is non-head.
@@ -58,7 +58,7 @@ func (c *LRUCache) remove(nod *Node146) {
 
 // addToFront adds a node to the front of a doubly-linked list.
 // No map operations.
-func (c *LRUCache) addToFront(nod *Node146) {
+func (c *LRUCache146) addToFront(nod *Node146) {
 	// Update node pointers.
 	nod.prv = nil
 	nod.nxt = c.hed
@@ -78,7 +78,7 @@ func (c *LRUCache) addToFront(nod *Node146) {
 // Conditions:
 //   - O(1) average time complexity.
 //   - Return value for key; or, -1.
-func (c *LRUCache) Get(key int) int {
+func (c *LRUCache146) Get(key int) int {
 	// Check whether the item exists.
 	if nod, exists := c.itms[key]; exists {
 		// Remove and add for least recently used logic.
@@ -94,7 +94,7 @@ func (c *LRUCache) Get(key int) int {
 //   - If item exists, update existing value.
 //   - If item doesn't exist, add a new item.
 //   - If number of items exceeds capacity, remove tail.
-func (c *LRUCache) Put(key int, val int) {
+func (c *LRUCache146) Put(key int, val int) {
 	// Check whether item exists.
 	if nod, exists := c.itms[key]; exists {
 		// Update value.
@@ -118,8 +118,7 @@ func (c *LRUCache) Put(key int, val int) {
 	}
 }
 
-// Test cases
-func TestLRUCache(t *testing.T) {
+func TestLRUCache146(t *testing.T) {
 	tests := []struct {
 		name     string
 		ops      []string
@@ -148,7 +147,7 @@ func TestLRUCache(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			var cache LRUCache
+			var cache LRUCache146
 			for i, op := range tc.ops {
 				var result int
 				switch op {

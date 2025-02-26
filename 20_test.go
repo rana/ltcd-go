@@ -5,17 +5,17 @@ import "testing"
 // Time complexity: O(n), n is the length of the string. We traverse the string once.
 // Space complexity: O(n), We store
 // https://claude.ai/chat/4f9fa457-120d-406b-9926-7a54697b1b16
-func isValid(s string) bool {
+func isValid20(s string) bool {
 	// Valid Parentheses
 	// Given a string s.
 	// s contains (){}[]
 	// Determine whether string meets parenthesis conditions.
 	// Return true if conditions met.
 	// Conditions:
-	//	* Brackets are paired with the dame type.
+	//	* Brackets are paired with the same type.
 	//	* Bracket ordering maintained (e.g., open then close)
 	// Use a stack.
-	// Push close brackets on to the stack to validate rules.
+	// Push close brackets onto the stack to validate rules.
 
 	// Check input min edge case.
 	if len(s) <= 1 {
@@ -54,8 +54,7 @@ func isValid(s string) bool {
 	return len(stk) == 0
 }
 
-// Test cases
-func TestIsValid(t *testing.T) {
+func TestIsValid20(t *testing.T) {
 	tests := []struct {
 		name string
 		str  string
@@ -105,7 +104,7 @@ func TestIsValid(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := isValid(tc.str)
+			got := isValid20(tc.str)
 			if got != tc.want {
 				t.Errorf("isValid(%q) = %v; want %v", tc.str, got, tc.want)
 			}

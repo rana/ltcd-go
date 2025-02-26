@@ -14,7 +14,7 @@ type ListNode2 struct {
 // Time complexity: O(max(m,n)), m and n are the lengths of the list. We traverse each list once.
 // Space complexity: O(1), constant additional space used.
 // https://claude.ai/chat/703d6000-3fc2-4646-afc2-05dc51e03593
-func addTwoNumbers(l1 *ListNode2, l2 *ListNode2) *ListNode2 {
+func addTwoNumbers2(l1 *ListNode2, l2 *ListNode2) *ListNode2 {
 	// Add Two Numbers
 	// Given two linked lists.
 	// Each linked list has digits of an integer in reverse.
@@ -52,7 +52,7 @@ func addTwoNumbers(l1 *ListNode2, l2 *ListNode2) *ListNode2 {
 }
 
 // Test cases
-func TestAddTwoNumbers(t *testing.T) {
+func TestAddTwoNumbers2(t *testing.T) {
 	// Helper function to create linked list from slice
 	createList := func(nums []int) *ListNode2 {
 		var hed = &ListNode2{}
@@ -86,7 +86,7 @@ func TestAddTwoNumbers(t *testing.T) {
 	for idx, tt := range tests {
 		l1 := createList(tt.l1)
 		l2 := createList(tt.l2)
-		got := listToSlice(addTwoNumbers(l1, l2))
+		got := listToSlice(addTwoNumbers2(l1, l2))
 
 		if !reflect.DeepEqual(got, tt.want) {
 			t.Errorf("Test %d: got %v, want %v", idx, got, tt.want)
