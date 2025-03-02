@@ -18,18 +18,12 @@ func minSubArrayLen209(tgt int, nums []int) int {
 	// Return min length; or, zero.
 	// Use a sliding window two-pointer technique.
 
-	// Check for input minimum edge case.
-	if len(nums) == 0 {
-		return 0
-	}
-
 	// Initialize variables.
-	lft := 0
-	sum := 0
 	minLen := math.MaxInt32
+	sum, lft := 0, 0
 
 	// Expand the right-side of the window.
-	for rht := 0; rht < len(nums); rht++ {
+	for rht := range nums {
 		// Calculate the window sum.
 		sum += nums[rht]
 

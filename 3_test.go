@@ -18,12 +18,12 @@ func lengthOfLongestSubstring3(s string) int {
 	// Initialize variables.
 	maxLen := 0
 	lft := 0
-	chrs := make(map[byte]int)
+	lstIdxs := make(map[byte]int)
 
 	// Iterate through right pointer of each character.
-	for rht := 0; rht < len(s); rht++ {
+	for rht := range s {
 		// Get previous matching character.
-		prv, ok := chrs[s[rht]]
+		prv, ok := lstIdxs[s[rht]]
 		// Check whether character was seen
 		// and in the window.
 		if ok && prv >= lft {
@@ -34,7 +34,7 @@ func lengthOfLongestSubstring3(s string) int {
 		}
 
 		// Store the position of the current character.
-		chrs[s[rht]] = rht
+		lstIdxs[s[rht]] = rht
 
 		// Calculate current substring length.
 		curLen := rht - lft + 1
