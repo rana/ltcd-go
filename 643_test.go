@@ -17,21 +17,21 @@ func findMaxAverage643(nums []int, k int) float64 {
 	// Return the max average.
 	// Track the sum.
 
-	// Calculate initial sum of first k elements
-	sum := 0
+	// Calculate initial curSum of first k elements
+	curSum := 0
 	for i := range k {
-		sum += nums[i]
+		curSum += nums[i]
 	}
 
 	// Initialize maxSum with the first window's sum
-	maxSum := sum
+	maxSum := curSum
 
 	// Slide the window and update maxSum if needed
 	for i := k; i < len(nums); i++ {
 		// Add the new element and remove the element that's no longer in the window
-		sum = sum + nums[i] - nums[i-k]
-		if sum > maxSum {
-			maxSum = sum
+		curSum = curSum + nums[i] - nums[i-k]
+		if curSum > maxSum {
+			maxSum = curSum
 		}
 	}
 

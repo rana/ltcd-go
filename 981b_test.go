@@ -5,11 +5,6 @@ import (
 	"testing"
 )
 
-// Time Based Key-Value Store
-// set: key, val
-// get: key, val, tme. prv_tme <= srch_tme
-// Use a struct entry value with val,tme
-
 type TimeMap981b struct {
 }
 
@@ -22,6 +17,7 @@ func (tm *TimeMap981b) Set(key string, val string, tme int) {
 func (tm *TimeMap981b) Get(key string, tme int) string {
 	return ""
 }
+
 func TestTimeMap981b(t *testing.T) {
 	tests := []struct {
 		name     string

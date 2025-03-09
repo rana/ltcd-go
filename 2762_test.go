@@ -14,13 +14,15 @@ func continuousSubarrays2762(nums []int) int64 {
 	// Determine count of continuous subarrays.
 	// Return count.
 	// Conditions:
+	// * All pairs of number of absolute difference of 2.
 	// * 0 <= abs(nums[i1] - nums[i2]) <= 2
-	// * Subarray is contiguous, non-empty.
+	// * Subarray is continuous, non-empty.
 	// * Subarray may be single element.
 	// Use two-pointer sliding window technique.
-	// Use a frequency counter in window.
+	// Use a frequency counter for window.
+	// Use a helper function isValid to check window condition.
 
-	cnt, lft := int64(0), 0
+	cnt, lft := 0, 0
 
 	// Keep track of frequency of each element in frqWnd
 	frqWnd := make(map[int]int)
@@ -40,10 +42,10 @@ func continuousSubarrays2762(nums []int) int64 {
 		}
 
 		// Add count of valid subarrays ending at right
-		cnt += int64(rht - lft + 1)
+		cnt += rht - lft + 1
 	}
 
-	return cnt
+	return int64(cnt)
 }
 
 // Helper function to check if max-min ≤ 2

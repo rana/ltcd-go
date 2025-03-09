@@ -51,13 +51,13 @@ func simplifyPath71(pth string) string {
 	}
 
 	// Build simplfied path.
-	var bld strings.Builder
+	var res strings.Builder
 	for _, dir := range stk {
-		bld.WriteString("/")
-		bld.WriteString(dir)
+		res.WriteString("/")
+		res.WriteString(dir)
 	}
 
-	return bld.String()
+	return res.String()
 }
 
 func TestSimplifyPath71(t *testing.T) {

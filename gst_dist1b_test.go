@@ -1,47 +1,11 @@
 package main
 
 import (
-	"sort"
 	"testing"
 )
 
 func distributeEvenly1b(amt int, owed map[string]int) map[string]int {
-	// Distribute Money Evenly
-	// Given an integer amt.
-	// Given a string-int map owed.
-	// Determine an even distribution of amt to owed.
-	// Conditions:
-	// * Order the recipients
-	// * Do distribution in rounds.
-	// * If owed amount is reached, add no more.
-	// Create an array of recipients to maintain distribution order.
-	// Sort the array of recipients.
-
-	dst := make(map[string]int)
-	var rcps []string
-	for rcp := range owed {
-		rcps = append(rcps, rcp)
-	}
-	sort.Strings(rcps)
-
-	for amt > 0 {
-		dstAny := false
-		for _, rcp := range rcps {
-			if dst[rcp] < owed[rcp] {
-				dst[rcp]++
-				amt--
-				dstAny = true
-				if amt == 0 {
-					break
-				}
-			}
-		}
-		if !dstAny {
-			break
-		}
-	}
-
-	return dst
+	return nil
 }
 
 func TestDistributeEvenly1b(t *testing.T) {
