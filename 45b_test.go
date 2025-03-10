@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func jump45b(nums []int) int {
+func jump45b(jmps []int) int {
 	return 0
 }
 

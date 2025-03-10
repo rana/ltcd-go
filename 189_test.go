@@ -5,37 +5,31 @@ import (
 	"testing"
 )
 
+// Time complexity: O(n)
+// Space complexity: O(1)
 // https://chatgpt.com/c/671433e1-611c-8002-b721-a9ab2468fb0e
 func rotate189(nums []int, k int) {
 	// Rotate Array
-	// Given an integer array nums.
-	// Given a segment length k.
-	// Rotate the array to the right by k.
-	// The array wraps around.
-	// Use three calls to a reverse function.
-	// Reverse whole array, first segment, second segment.
-
-	// Adjust k in case larger than nums.
-	n := len(nums)
-	k = k % n
-
-	// Reverse whole array.
-	reverse189(nums, 0, n-1)
-
-	// Reverse first segment
-	reverse189(nums, 0, k-1)
-
-	// Reverse second segment
-	reverse189(nums, k, n-1)
-}
-
-func reverse189(nums []int, lft, rht int) {
-	// Reverse from left to right.
-	for lft < rht {
-		nums[lft], nums[rht] = nums[rht], nums[lft]
-		lft++
-		rht--
+	// Given and integer array nums.
+	// Given a positive integer k.
+	// Rotate array right by k.
+	// Use helper closusre rev to reverse.
+	// Use three-steps:
+	// 1. Reverse whole
+	// 2. Reverse before k
+	// 3. Reverse k and after
+	rev := func(nums []int) {
+		lft, rht := 0, len(nums)-1
+		for lft < rht {
+			nums[lft], nums[rht] = nums[rht], nums[lft]
+			lft++
+			rht--
+		}
 	}
+	k %= len(nums)
+	rev(nums)
+	rev(nums[:k])
+	rev(nums[k:])
 }
 
 func TestRotate189(t *testing.T) {

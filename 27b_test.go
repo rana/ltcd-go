@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-// Time complexity: O(n)
-// Space complexity: O(1)
+// Time complexity:
+// Space complexity:
 func removeElement27b(nums []int, val int) int {
 	return 0
 }

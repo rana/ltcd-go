@@ -5,28 +5,33 @@ import "testing"
 // Time complexity: O(n), n is the length of the nums array.
 // Space complexity: O(1), constant additional space used.
 // https://console.anthropic.com/workbench/12bc0d21-11f2-4aff-837d-fc50a6bcc9c2
-func canJump55(nums []int) bool {
-	maxRch := 0 // Maximum reachable position
-	numLen := len(nums)
+func canJump55(jmps []int) bool {
+	// Jump Game
+	// Given an integer array nums.
+	// Determine whether you can reach last index.
+	// Return true if condition met.
+	// Conditions:
+	// * Start at first index
+	// * Element value is max jump value
+	// * Can jump less than max if helpful
+	// Use local optimization "greedy" approach.
 
-	for idx := range numLen {
-		// If current position is beyond our reach, we can't proceed
-		if idx > maxRch {
+	if len(jmps) == 1 {
+		return true
+	}
+	maxJmp, lstIdx := 0, len(jmps)-1
+	for idx, jmp := range jmps {
+		if idx > maxJmp {
 			return false
 		}
-
-		// Update maximum reachable position
-		curRch := idx + nums[idx]
-		if curRch > maxRch {
-			maxRch = curRch
+		curJmp := idx + jmp
+		if curJmp > maxJmp {
+			maxJmp = curJmp
 		}
-
-		// If we can reach the last index, return early
-		if maxRch >= numLen-1 {
+		if maxJmp >= lstIdx {
 			return true
 		}
 	}
-
 	return true
 }
 

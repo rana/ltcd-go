@@ -7,26 +7,28 @@ import "testing"
 // https://chatgpt.com/c/6714797e-7598-8002-b8ea-f625fcd45f64
 func maxProfit122(prcs []int) int {
 	// Best Time to Buy and Sell Stock II
-	// Given and integer array prcs.
-	// Buy and sell multiple times.
-	// Hold one share at a time.
-	// Determine the maximum profit.
-	// Return the maximum profit.
-	// Use a local optimization "greedy" algorithm.
+	// Given an integer array prcs.
+	// Determine max profit.
+	// Return max profit.
+	// Conditions:
+	// * Hold one share at a time
+	// * Buy one day, sell next day
+	// * Repeat
+	// Use local optimization "greedy" approach.
 
 	// Initialize variable.
-	max_pft := 0
+	maxPrf := 0
 
 	// Iterate through each element of the prcs array.
 	for idx := 1; idx < len(prcs); idx++ {
 		// Check whether there is a daily profit.
 		if prcs[idx] > prcs[idx-1] {
 			// Accumulate daily profit.
-			max_pft += prcs[idx] - prcs[idx-1]
+			maxPrf += prcs[idx] - prcs[idx-1]
 		}
 	}
 
-	return max_pft
+	return maxPrf
 }
 
 func TestMaxProfit122(t *testing.T) {

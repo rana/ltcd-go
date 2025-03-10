@@ -10,12 +10,15 @@ import (
 // https://chatgpt.com/c/6714082c-4dc4-8002-9e24-3f3622ee11e4
 func removeDuplicates26(nums []int) int {
 	// Remove Duplicates from Sorted Array
-	// Given a sort-ascending integer array nums.
-	// Remove duplicate in-place.
-	// Each element appears once.
-	// Maintain sort ascending.
-	// Return the count of the unique elements.
-	// Use a two-pointer technique.
+	// Given an integer array nums.
+	// Sort array in-place with unique count constraint.
+	// Determine processed list length.
+	// Return list length.
+	// Conditions:
+	// * 1 unique element
+	// * Maintain sort-ascending
+	// Use two-pointer technique.
+	// Use unique count 1.
 
 	// Initialize the unique count.
 	const unq_cnt = 1

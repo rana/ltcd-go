@@ -13,7 +13,7 @@ func majorityElement169(nums []int) int {
 	// Use the Boyer-Moore Voting algorithm.
 
 	// Initialize a candidate and count.
-	can, cnt := nums[0], 0
+	can, cnt := 0, 0
 
 	// Iterate through each element of nums.
 	for _, num := range nums {

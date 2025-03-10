@@ -8,26 +8,22 @@ import (
 // Space complexity: O(1), constant additional space used.
 // https://console.anthropic.com/workbench/fc2821b1-dab9-4f65-8725-0911cd10b2d3
 func canCompleteCircuit134(gas []int, cost []int) int {
-	if len(gas) == 0 || len(gas) != len(cost) {
-		return -1
+	if len(gas) == 1 {
+		return 0
 	}
-
-	totGas, curGas := 0, 0
-	startIndex := 0
-
-	for idx := 0; idx < len(gas); idx++ {
-		dif := gas[idx] - cost[idx]
-		totGas += dif
-		curGas += dif
-
+	fstGasIdx := 0
+	curGas, totGas := 0, 0
+	for idx := range gas {
+		dlt := gas[idx] - cost[idx]
+		curGas += dlt
+		totGas += dlt
 		if curGas < 0 {
 			curGas = 0
-			startIndex = idx + 1
+			fstGasIdx = idx + 1
 		}
 	}
-
 	if totGas >= 0 {
-		return startIndex
+		return fstGasIdx
 	}
 	return -1
 }

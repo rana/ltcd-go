@@ -51,12 +51,12 @@ func (rs *RandomizedSet380) Remove(val int) bool {
 	lstVal := rs.arr[len(rs.arr)-1]
 	// Overwrite the array removal element with the last element.
 	rs.arr[idx] = lstVal
-	// Update the last element to index mapping.
-	rs.mp[lstVal] = idx
 	// Remove the duplicate last element.
 	rs.arr = rs.arr[:len(rs.arr)-1]
 	// Remove the removal element from the map.
 	delete(rs.mp, val)
+	// Update the last element to index mapping.
+	rs.mp[lstVal] = idx
 
 	return true
 }

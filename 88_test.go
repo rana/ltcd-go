@@ -34,7 +34,7 @@ func merge88(nums1 []int, m int, nums2 []int, n int) {
 		idx--
 	}
 
-	// Copy any reamaining elements from nums2.
+	// Copy any remaining elements from nums2.
 	for idx2 >= 0 {
 		nums1[idx] = nums2[idx2]
 		idx2--

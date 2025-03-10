@@ -20,22 +20,22 @@ func productExceptSelf238(nums []int) []int {
 	// Pass two, compute right suffixes.
 
 	// Initialize variables.
-	res := make([]int, len(nums))
-	res[0] = 1
+	prds := make([]int, len(nums))
+	prds[0] = 1
 
 	// lft to rht: compute left prefix products and store.
 	for idx := 1; idx < len(nums); idx++ {
-		res[idx] = res[idx-1] * nums[idx-1]
+		prds[idx] = prds[idx-1] * nums[idx-1]
 	}
 
 	// rht to lft: compute right suffix products and store.
-	rhtPrd := 1
+	prd := 1
 	for idx := len(nums) - 1; idx >= 0; idx-- {
-		res[idx] *= rhtPrd
-		rhtPrd *= nums[idx]
+		prds[idx] *= prd
+		prd *= nums[idx]
 	}
 
-	return res
+	return prds
 }
 
 func TestProductExceptSelf238(t *testing.T) {

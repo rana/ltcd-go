@@ -6,37 +6,45 @@ import (
 
 // Time complexity: O(n), n is the length of the array.
 // Space complexity: O(1), constant additional space used.
-func jump45(nums []int) int {
-	// Edge case: single element array needs no jumps
-	if len(nums) <= 1 {
+func jump45(jmps []int) int {
+	// Jump Game II
+	// Given an integer array jmps.
+	// Determine min jump count to last index.
+	// Return min jump count.
+	// Conditions:
+	// * Start at first index
+	// * Element value is max jump from index
+	// * May jump less than max index if helpful
+	// Use local optimization "greedy" strategy.
+	//
+	if len(jmps) == 1 {
 		return 0
 	}
-
-	// Initialize variables
-	jmp := 0    // number of jumps
-	curMax := 0 // furthest index we can reach from current position
-	nxtMax := 0 // furthest index we can reach in next jump
+	jmpCnt, lstIdx := 0, len(jmps)-1
+	curMaxJmp, nxtMaxJmp := 0, 0
+	// curMaxJmp: furthest index we can reach from current position
+	// nxtMaxJmp: furthest index we can reach in next jump
 
 	// Iterate through array (except last element)
-	for idx := 0; idx < len(nums)-1; idx++ {
+	for idx, jmp := range jmps {
 		// Update furthest reachable position in next jump
-		nxtMax = max(nxtMax, idx+nums[idx])
+		nxtMaxJmp = max(nxtMaxJmp, idx+jmp)
 
 		// If we've reached the limit of our current jump
-		if idx == curMax {
+		if idx == curMaxJmp {
 			// Make the jump
-			jmp++
+			jmpCnt++
 			// Update our current reach to the furthest we found
-			curMax = nxtMax
+			curMaxJmp = nxtMaxJmp
 
 			// If we can already reach the end, no need to continue
-			if curMax >= len(nums)-1 {
+			if curMaxJmp >= lstIdx {
 				break
 			}
 		}
 	}
 
-	return jmp
+	return jmpCnt
 }
 
 func TestJump45(t *testing.T) {

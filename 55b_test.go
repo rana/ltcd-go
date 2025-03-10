@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func canJump55b(nums []int) bool {
+func canJump55b(jmps []int) bool {
 	return false
 }
 

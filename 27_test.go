@@ -11,25 +11,18 @@ import (
 func removeElement27(nums []int, val int) int {
 	// Remove Element
 	// Given an integer array nums.
-	// Given and integer value val.
-	// Remove all occurrences of val from nums in-place.
-	// Return the count of non-val elements.
-	// Use a two-pointer technique.
-
-	// lft is the index of the last allowable element.
+	// Given an integer val.
+	// Sort val to end of nums in-place.
+	// Determine non-val list length.
+	// Return list length.
+	// Use two-pointer technique.
 	lft := 0
-
-	// Iterate through each element in nums.
-	for rht := 0; rht < len(nums); rht++ {
-		// Check for current not equal to val.
-		// Skip over elments equal to val.
+	for rht := range nums {
 		if nums[rht] != val {
-			// Move valid element left.
 			nums[lft] = nums[rht]
 			lft++
 		}
 	}
-
 	return lft
 }
 

@@ -10,11 +10,12 @@ import (
 // https://chatgpt.com/c/67147424-275c-8002-a970-61aaec808a22
 func maxProfit121(prcs []int) int {
 	// Best Time to Buy and Sell Stock
-	// Given an integer array prcs.
-	// Buy once and sell once.
-	// Determine the maximum profit.
-	// Return the maximum profit.
-	// Use a local optimization "greedy" algorithm.
+	// Given integer array prcs.
+	// Determine max profit.
+	// Return max profit; or, zero.
+	// Conditions:
+	// * Buy once, sell once.
+	// Use local optimization "greedy" approach.
 
 	// Initialize variable.
 	min_prc := math.MaxInt32
