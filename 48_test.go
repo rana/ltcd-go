@@ -14,19 +14,19 @@ func rotate48(mtx [][]int) {
 	// Rotate clockwise 90 degrees in-place.
 	// Use transpose matrix and reverse rows operations.
 
-	n := len(mtx)
+	mtxLen := len(mtx)
 
 	// Transpose matrix.
-	for row := 0; row < n; row++ {
-		for col := row; col < n; col++ {
+	for row := range mtxLen {
+		for col := row; col < mtxLen; col++ {
 			mtx[row][col], mtx[col][row] = mtx[col][row], mtx[row][col]
 		}
 	}
 
 	// Reverse rows.
-	for row := 0; row < n; row++ {
-		for col := 0; col < n/2; col++ {
-			mtx[row][col], mtx[row][n-1-col] = mtx[row][n-1-col], mtx[row][col]
+	for row := range mtxLen {
+		for col := range mtxLen / 2 {
+			mtx[row][col], mtx[row][mtxLen-1-col] = mtx[row][mtxLen-1-col], mtx[row][col]
 		}
 	}
 }

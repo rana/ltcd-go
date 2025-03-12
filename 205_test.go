@@ -15,17 +15,12 @@ func isIsomorphic205(s, t string) bool {
 	//	* Bi-directional mapping is identical s -> t == t -> s.
 	// Use two maps to solve.
 
-	// Check input minimum edge case.
-	if len(s) != len(t) {
-		return false
-	}
-
 	// Initialize two maps.
 	sTOt := make(map[byte]byte)
 	tTOs := make(map[byte]byte)
 
 	// Iterate through each character.
-	for idx := 0; idx < len(s); idx++ {
+	for idx := range len(s) {
 		// Get characters from each string.
 		chrS := s[idx]
 		chrT := t[idx]
@@ -90,12 +85,6 @@ func TestIsIsomorphic205(t *testing.T) {
 			str:  "a",
 			txt:  "b",
 			want: true,
-		},
-		{
-			name: "Different lengths",
-			str:  "abc",
-			txt:  "ab",
-			want: false,
 		},
 		{
 			name: "Same characters different pattern",

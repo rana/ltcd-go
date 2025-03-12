@@ -23,16 +23,11 @@ func threeSum15(nums []int) [][]int {
 	// Initialize a result array.
 	var res [][]int
 
-	// Check input minimum edge case.
-	if len(nums) < 3 {
-		return res
-	}
-
 	// Sort nums to enable two-pointer technique.
 	sort.Ints(nums)
 
 	// Iterate through first numbers.
-	for idx := 0; idx < len(nums)-2; idx++ {
+	for idx := range len(nums) - 2 {
 		// Check for first number duplicates.
 		if idx > 0 && nums[idx] == nums[idx-1] {
 			continue

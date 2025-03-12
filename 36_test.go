@@ -25,15 +25,15 @@ func isValidSudoku36(brd [][]byte) bool {
 	boxs := make([]map[byte]bool, brdLen)
 
 	// Initialize each map.
-	for idx := 0; idx < brdLen; idx++ {
+	for idx := range brdLen {
 		rows[idx] = make(map[byte]bool)
 		cols[idx] = make(map[byte]bool)
 		boxs[idx] = make(map[byte]bool)
 	}
 
 	// Iterate through each board cell.
-	for row := 0; row < brdLen; row++ {
-		for col := 0; col < brdLen; col++ {
+	for row := range brdLen {
+		for col := range brdLen {
 			// Get the current board character.
 			val := brd[row][col]
 

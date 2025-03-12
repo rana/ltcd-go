@@ -28,13 +28,13 @@ func isAnagram242(s, t string) bool {
 
 	// Iterate through each string.
 	// Increment and decrement.
-	for idx := 0; idx < len(s); idx++ {
+	for idx := range len(s) {
 		frq[s[idx]-'a']++
 		frq[t[idx]-'a']--
 	}
 
 	// Check for equal occurrences.
-	for idx := 0; idx < len(frq); idx++ {
+	for idx := range len(frq) {
 		if frq[idx] != 0 {
 			return false
 		}

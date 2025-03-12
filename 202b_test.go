@@ -2,8 +2,8 @@ package main
 
 import "testing"
 
-// Time complexity: O(logn^2)
-// Space complexity: O(1)
+// Time complexity:
+// Space complexity:
 func isHappy(num int) bool {
 	return false
 }

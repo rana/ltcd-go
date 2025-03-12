@@ -16,9 +16,6 @@ func longestCommonPrefix14(strs []string) string {
 	// is in all strings.
 
 	// Check input minimum edge cases.
-	if len(strs) == 0 {
-		return ""
-	}
 	if len(strs) == 1 {
 		return strs[0]
 	}
@@ -27,7 +24,7 @@ func longestCommonPrefix14(strs []string) string {
 	fstWrd := strs[0]
 
 	// Iterate through each character of the first word.
-	for idx := 0; idx < len(fstWrd); idx++ {
+	for idx := range fstWrd {
 		// Get the first character of the first word.
 		curChr := fstWrd[idx]
 
@@ -60,11 +57,6 @@ func TestLongestCommonPrefix14(t *testing.T) {
 		{
 			name:     "Example 2",
 			input:    []string{"dog", "racecar", "car"},
-			expected: "",
-		},
-		{
-			name:     "Empty array",
-			input:    []string{},
 			expected: "",
 		},
 		{

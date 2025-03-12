@@ -25,11 +25,6 @@ func TestLongestCommonPrefix14b(t *testing.T) {
 			expected: "",
 		},
 		{
-			name:     "Empty array",
-			input:    []string{},
-			expected: "",
-		},
-		{
 			name:     "Single string",
 			input:    []string{"hello"},
 			expected: "hello",

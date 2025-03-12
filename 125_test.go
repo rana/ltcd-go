@@ -18,18 +18,22 @@ func isValidPalindrome125(s string) bool {
 	// Use a one-pass approach which cleans while checks.
 	// Use a two-pointer technique.
 
+	isLtrDig := func(chr rune) bool {
+		return unicode.IsLetter(chr) || unicode.IsDigit(chr)
+	}
+
 	// Initialize two pointers.
 	lft, rht := 0, len(s)-1
 
 	// Iterate until left and right meet.
 	for lft < rht {
 		// Skip left non-alphanumeric characters.
-		for lft < rht && !isAlphanumeric125(rune(s[lft])) {
+		for lft < rht && !isLtrDig(rune(s[lft])) {
 			lft++
 		}
 
 		// Skip right non-alphanumeric characters.
-		for lft < rht && !isAlphanumeric125(rune(s[rht])) {
+		for lft < rht && !isLtrDig(rune(s[rht])) {
 			rht--
 		}
 
@@ -44,10 +48,6 @@ func isValidPalindrome125(s string) bool {
 	}
 
 	return true
-}
-
-func isAlphanumeric125(chr rune) bool {
-	return unicode.IsLetter(chr) || unicode.IsDigit(chr)
 }
 
 // Unit Tests

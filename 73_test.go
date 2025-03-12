@@ -7,15 +7,16 @@ import "testing"
 // https://claude.ai/chat/8b895b48-7701-4bb0-a48a-da43537a00cf
 func setZeroes73(mtx [][]int) {
 	// Set Matrix Zeroes
-	// Given an MxN integer matrix.
-	// Set whole row and whole column zero if an element is zero.
+	// Given an m x n integer matrix mtx.
+	// Transform in-place.
 	// Conditions:
-	//	* Perform operation in-place.
-
-	// Check input minimum edge cases.
-	if len(mtx) == 0 || len(mtx[0]) == 0 {
-		return
-	}
+	// * If element is zero, set row zero.
+	// * If element is zero, set col zero.
+	// Use first row/col to store element states.
+	// Use two bools to store first row/col state.
+	// Use two steps:
+	// 1. Identify and store element zero state.
+	// 2. Update non-first row/col element state to zero.
 
 	// Get dimensions.
 	rows := len(mtx)
@@ -25,18 +26,18 @@ func setZeroes73(mtx [][]int) {
 	fstRowZero := false
 	fstColZero := false
 
-	// Detect whether the first row has any zeros.
-	for col := 0; col < cols; col++ {
-		if mtx[0][col] == 0 {
-			fstRowZero = true
+	// Detect whether the first column has any zeros.
+	for row := range rows {
+		if mtx[row][0] == 0 {
+			fstColZero = true
 			break
 		}
 	}
 
-	// Detect whether the first column has any zeros.
-	for row := 0; row < rows; row++ {
-		if mtx[row][0] == 0 {
-			fstColZero = true
+	// Detect whether the first row has any zeros.
+	for col := range cols {
+		if mtx[0][col] == 0 {
+			fstRowZero = true
 			break
 		}
 	}
@@ -62,14 +63,14 @@ func setZeroes73(mtx [][]int) {
 
 	// Set first row zero if needed.
 	if fstRowZero {
-		for col := 0; col < cols; col++ {
+		for col := range cols {
 			mtx[0][col] = 0
 		}
 	}
 
 	// Set first column zero if needed.
 	if fstColZero {
-		for row := 0; row < rows; row++ {
+		for row := range rows {
 			mtx[row][0] = 0
 		}
 	}

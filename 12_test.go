@@ -17,9 +17,9 @@ func intToRoman12(num int) string {
 	// Roman numerals: I V X L C D M
 
 	// Initialize variables.
-	vps := []struct {
+	rmns := []struct {
 		val int
-		sym string
+		str string
 	}{
 		{1000, "M"},
 		{900, "CM"},
@@ -38,14 +38,14 @@ func intToRoman12(num int) string {
 	var res strings.Builder
 
 	// Iterate through value-pair table.
-	for _, vp := range vps {
+	for _, rmn := range rmns {
 		// Check whther input integer is greater or
 		// equal to current table value.
-		for num >= vp.val {
+		for num >= rmn.val {
 			// Store the roman numeral.
-			res.WriteString(vp.sym)
+			res.WriteString(rmn.str)
 			// Decrement the current table value.
-			num -= vp.val
+			num -= rmn.val
 		}
 	}
 

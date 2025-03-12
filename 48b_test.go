@@ -8,7 +8,6 @@ import (
 // Time complexity:
 // Space complexity:
 func rotate48b(mtx [][]int) {
-
 }
 
 func TestRotate48b(t *testing.T) {

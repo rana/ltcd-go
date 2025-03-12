@@ -6,7 +6,7 @@ import (
 
 // Time complexity:
 // Space complexity:
-func wordPattern290b(pat string, s string) bool {
+func wordPattern290b(chrPat string, strWrds string) bool {
 	return false
 }
 

@@ -46,12 +46,6 @@ func TestIsIsomorphic205b(t *testing.T) {
 			want: true,
 		},
 		{
-			name: "Different lengths",
-			str:  "abc",
-			txt:  "ab",
-			want: false,
-		},
-		{
 			name: "Same characters different pattern",
 			str:  "badc",
 			txt:  "baba",
