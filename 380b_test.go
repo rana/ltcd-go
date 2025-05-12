@@ -1,64 +1,32 @@
 package main
 
 import (
-	"math/rand"
 	"testing"
 )
 
-// Insert Delete GetRandom O(1)
-// Design RanomizedSet with all operations
-// with average time complexity of O(1).
-// Conditions:
-// * insert(val int) bool
-// * remove(val int) bool
-// * getRandom() int
-// Use map[int]int val-idx for insert, remove.
-// Use []int of vals for getRandom().
-// Use package "rand" for array index generation.
-
 type RandomizedSet380b struct {
-	mp  map[int]int
-	arr []int
 }
 
 func Constructor380b() RandomizedSet380b {
-	return RandomizedSet380b{
-		mp: make(map[int]int),
-	}
+	return RandomizedSet380b{}
 }
 
 // Inserts an item val into the set if not present.
 // Returns true if the item was not present.
 func (rs *RandomizedSet380b) Insert(val int) bool {
-	_, exists := rs.mp[val]
-	if exists {
-		return false
-	}
-	rs.mp[val] = len(rs.arr)
-	rs.arr = append(rs.arr, val)
-	return true
+	return false
 }
 
 // Removes an item val from the set if present.
 // Returns true if the item was present.
 func (rs *RandomizedSet380b) Remove(val int) bool {
-	idx, exists := rs.mp[val]
-	if !exists {
-		return false
-	}
-	lstVal := rs.arr[len(rs.arr)-1]
-	rs.arr[idx] = lstVal
-	rs.arr = rs.arr[:len(rs.arr)-1]
-	delete(rs.mp, val)
-	rs.mp[lstVal] = idx
-	return true
+	return false
 }
 
 // Returns a random element from the
 // current set of elements
 func (rs *RandomizedSet380b) GetRandom() int {
-	idx := rand.Intn(len(rs.arr))
-	return rs.arr[idx]
+	return 0
 }
 
 func TestRandomizedSet380b(t *testing.T) {

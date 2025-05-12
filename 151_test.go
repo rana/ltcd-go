@@ -8,7 +8,7 @@ import (
 // Time complexity: O(n), n is the string array. We traverse the array three times. Once to split by whitespace. And a second time to reverse. A third time to join a string.
 // Space complexity: O(n), n is the lnegth of a split array holding intermediate words.
 // https://claude.ai/chat/c15cc2ad-5d6a-40d4-91ae-8b6c3810cb01
-func reverseWords151(str string) string {
+func reverseWords151(s string) string {
 	// Reverse Words in a String
 	// Given a string str.
 	// String holds words and whitespaces.
@@ -16,25 +16,15 @@ func reverseWords151(str string) string {
 	// Return a string of reversed word delimited by spaces.
 	// Use a two-pointer technique.
 
-	// Trim leading and trailing spaces.
-	// Split words by whitespace.
-	wrds := strings.Fields(str)
-
-	// Initialize two-pointer variables.
-	lft, rht := 0, len(wrds)-1
-
-	// Iterate until lft and rht meet.
-	for lft < rht {
-		// Reverse words.
-		wrds[lft], wrds[rht] = wrds[rht], wrds[lft]
-
-		// Advance indexes.
-		lft++
-		rht--
+	var res strings.Builder
+	flds := strings.Fields(s)
+	for idx := len(flds) - 1; idx >= 0; idx-- {
+		res.WriteString(flds[idx])
+		if idx != 0 {
+			res.WriteRune(' ')
+		}
 	}
-
-	// Return reversed word strign joined by space.
-	return strings.Join(wrds, " ")
+	return res.String()
 }
 
 func TestReverseWords151(t *testing.T) {

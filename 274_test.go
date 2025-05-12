@@ -20,11 +20,11 @@ func hIndex274(ctes []int) int {
 	// hidx: [1 2 3 4 5] (1-based index)
 
 	sort.Sort(sort.Reverse(sort.IntSlice(ctes)))
-	for idx, val := range ctes {
+	for idx, cte := range ctes {
 		// hidx is 1-based
 		hidx := idx + 1
 		// Check for h-index condition.
-		if val < hidx {
+		if cte < hidx {
 			return idx
 		}
 	}
